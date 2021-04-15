@@ -9,9 +9,9 @@ import { RegisterFormComponent } from './register-form/register-form.component';
 const routes: Routes = [
   {path:'register',component:RegisterFormComponent},
   {path:'login',component:LoginFormComponent},
-  {path:'',component:HomeComponent},
-  {path:'forgotuserid',component:ForgotUserIdComponent},
-  {path:'forgotpassword',component:ForgotPasswordComponent}
+  {path:'/',component:HomeComponent},
+  {path:'/login/forgotuserid',component:ForgotUserIdComponent},
+  {path:'/login/forgotpassword',component:ForgotPasswordComponent}
 ];
 
 @NgModule({
