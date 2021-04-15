@@ -10,8 +10,8 @@ const routes: Routes = [
   {path:'register',component:RegisterFormComponent},
   {path:'login',component:LoginFormComponent},
   {path:'',component:HomeComponent},
-  {path:'forgotuserid',component:ForgotUserIdComponent},
-  {path:'forgotpassword',component:ForgotPasswordComponent}
+  {path:'login/forgotUserId',component:ForgotUserIdComponent},
+  {path:'login/forgotpassword',component:ForgotPasswordComponent}
 ];
 
 @NgModule({
