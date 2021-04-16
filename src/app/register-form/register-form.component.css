@@ -1,0 +1,4 @@
+.form-control.ng-untouched.ng-pristine.ng-invalid.is-invalid{
+    border:1px solid red;
+    border-left:2px solid red;
+}

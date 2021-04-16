@@ -1,22 +1,32 @@
 <div class="container justify-content-center">
 <h1>User Registration</h1>
-<form class="form-horizontal" action="/action_page.php">
+<form class="form-horizontal" #registerForm="ngForm" (ngSubmit)="validate(registerForm)">
   <div class="form-group">
     <label class="control-label col-sm-2" for="email">First Name:</label>
     <div class="col-sm-10">
-      <input type="email" class="form-control" id="email" placeholder="Enter First Name">
+      <input type="text" class="form-control" placeholder="Enter First Name" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" [ngClass]="{ 'is-invalid': registerForm.submitted && firstName.invalid }" required>
+      
+      <div *ngIf="registerForm.submitted && firstName.invalid" class="invalid-feedback">
+        <div *ngIf="firstName.errors.required">First Name is required</div>
+    </div>
     </div>
   </div>
   <div class="form-group">
-    <label class="control-label col-sm-2" for="pwd">Last Name:</label>
+    <label class="control-label col-sm-2" for="lastName">Last Name:</label>
     <div class="col-sm-10">
-      <input type="password" class="form-control" id="pwd" placeholder="Enter Last Name">
+      <input type="text" class="form-control"  placeholder="Enter Last Name" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" [ngClass]="{ 'is-invalid': registerForm.submitted && lastName.invalid }" required>
+      <div *ngIf="registerForm.submitted && lastName.invalid" class="text-danger">
+        <div *ngIf="lastName.errors.required">Last Name is required</div>
+    </div>
     </div>
   </div>
   <div class="form-group">
     <label class="control-label col-sm-2" for="pwd">Date of Birth:</label>
     <div class="col-sm-10">
-      <input type="date" class="form-control" id="dob" placeholder="Enter Date of birth">
+      <input type="date" class="form-control" placeholder="Enter Date of birth" name="dob" [(ngModel)]="model.dob" #dob="ngModel" [ngClass]="{ 'is-invalid': registerForm.submitted && dob.invalid }" required>
+      <div *ngIf="registerForm.submitted && dob.invalid" class="invalid-feedback">
+        <div *ngIf="dob.errors.required">Date of Birth is required</div>
+    </div>
     </div>
   </div>
   <div class="form-group">
@@ -39,13 +49,21 @@
   <div class="form-group">
     <label class="control-label col-sm-2" for="email">Email:</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="email" placeholder="Enter Email">
+      <input type="text" class="form-control" placeholder="Enter Email" pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" name="email" [(ngModel)]="model.email" #email="ngModel" [ngClass]="{ 'is-invalid': registerForm.submitted && email.invalid }" required>
+      <div *ngIf="registerForm.submitted && email.invalid" class="invalid-feedback">
+        <div *ngIf="email.errors.required">Email is required</div>
+        <div *ngIf="email.errors.pattern">Enter a valid email</div>
+    </div>
     </div>
   </div>
   <div class="form-group">
     <label class="control-label col-sm-2" for="contactNo">Contact no:</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="contactNo" placeholder="Enter Contact No">
+      <input type="text" class="form-control" placeholder="Enter Contact No" pattern="[0-9]{10}"name="contactNo" [(ngModel)]="model.contactNo" #contactNo="ngModel" [ngClass]="{ 'is-invalid': registerForm.submitted && contactNo.invalid }" required>
+      <div *ngIf="registerForm.submitted && contactNo.invalid" class="invalid-feedback">
+        <div *ngIf="contactNo.errors.required">Contact Number is required</div>
+        <div *ngIf="contactNo.errors.pattern">Contact Number should contain only digits</div>
+    </div>
     </div>
   </div>
   <div class="form-group">
@@ -60,39 +78,54 @@
   </div>
   
   <div class="form-group">
-    <label class="control-label col-sm-2" for="uname">User Name:</label>
+    <label class="control-label col-sm-2" for="userName">User Name:</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="uname" placeholder="Enter username">
+      <input type="text" class="form-control" placeholder="Enter username" name="userName" [(ngModel)]="model.userName" #userName="ngModel" [ngClass]="{ 'is-invalid': registerForm.submitted && userName.invalid }" required>
+      <div *ngIf="registerForm.submitted && userName.invalid" class="invalid-feedback">
+        <div *ngIf="dob.errors.required">Username is required</div>
+      </div>
     </div>
   </div>
   <div class="form-group">
     <label class="control-label col-sm-2" for="pwd">Password</label>
     <div class="col-sm-10">
-      <input type="password" class="form-control" id="pwd" placeholder="Enter Password">
+      <input type="password" class="form-control"  placeholder="Enter Password" name="password" [(ngModel)]="model.password" #password="ngModel" [ngClass]="{ 'is-invalid': registerForm.submitted && password.invalid }" required>
+      <div *ngIf="registerForm.submitted && password.invalid" class="invalid-feedback">
+        <div *ngIf="password.errors.required">Password is required</div>
+    </div>
     </div>
   </div>
-  <div class="form-group">
+  <!-- <div class="form-group">
     <label class="control-label col-sm-2" for="pwd">Confirm Password</label>
     <div class="col-sm-10">
       <input type="password" class="form-control" id="cpwd" placeholder="Enter Password">
     </div>
-  </div>
+  </div> -->
   <div class="form-group">
-    <label class="control-label col-sm-4" for="uname">What is your nick name ?</label>
+    <label class="control-label col-sm-4" for="sq1">What is your nick name ?</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="sq1" placeholder="Enter Answer">
+      <input type="text" class="form-control" placeholder="Enter Answer" name="sq1" [(ngModel)]="model.sq1" #sq1="ngModel" [ngClass]="{ 'is-invalid': registerForm.submitted && sq1.invalid }" required>
+      <div *ngIf="registerForm.submitted && sq1.invalid" class="invalid-feedback">
+        <div *ngIf="sq1.errors.required">Answer is required</div>
+    </div>
     </div>
   </div>
   <div class="form-group">
     <label class="control-label col-sm-4" for="uname">What is your first school name ?</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="sq2" placeholder="Enter Answer">
+      <input type="text" class="form-control" placeholder="Enter Answer" name="sq2" [(ngModel)]="model.sq2" #sq2="ngModel" [ngClass]="{ 'is-invalid': registerForm.submitted && sq2.invalid }" required>
+      <div *ngIf="registerForm.submitted && sq2.invalid" class="invalid-feedback">
+        <div *ngIf="sq2.errors.required">Answer is required</div>
+    </div>
     </div>
   </div>
   <div class="form-group">
     <label class="control-label col-sm-4" for="uname">What is your favourite colour ?</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="sq3" placeholder="Enter Answer">
+      <input type="text" class="form-control" placeholder="Enter Answer" name="sq3" [(ngModel)]="model.sq3" #sq3="ngModel" [ngClass]="{ 'is-invalid': registerForm.submitted && sq3.invalid }" required>
+      <div *ngIf="registerForm.submitted && sq3.invalid" class="invalid-feedback">
+        <div *ngIf="sq3.errors.required">Answer is required</div>
+    </div>
     </div>
   </div>
   <div class="form-group">
