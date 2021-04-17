@@ -24,15 +24,16 @@ export class RegisterFormComponent implements OnInit {
     else
     {
     // alert("New user created Successfully");
-    console.log(this.u);
+    
     this.registerServcie.registerUser(this.u)
-    .subscribe(result=>console.log(result),
+    .subscribe(result=>alert("New User Created Successfully."),
     error=>alert("Username already exists. Please choose other username"));
     }
   }
-  showEntity(e){
-    this.u.userCategory=e;
-    }
+  onOptionsSelected($event){
+    this.u.userCategory=$event;
+    
+   }
     assignGender(g:String){
       this.u.gender=g;
     }

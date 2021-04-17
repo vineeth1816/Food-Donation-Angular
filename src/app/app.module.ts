@@ -11,6 +11,7 @@ import { ForgotUserIdComponent } from './forgot-user-id/forgot-user-id.component
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { PasswordResetComponent } from './password-reset/password-reset.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {HttpClientModule} from '@angular/common/http';
     RegisterFormComponent,
     LoginFormComponent,
     ForgotUserIdComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    PasswordResetComponent
   ],
   imports: [
     BrowserModule,
