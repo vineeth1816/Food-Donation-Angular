@@ -1,5 +1,6 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ForgotuseridServiceService } from '../forgotuserid-service.service';
 import { User } from '../User';
 
@@ -11,11 +12,8 @@ import { User } from '../User';
 })
 export class ForgotUserIdComponent implements OnInit {
 
-  constructor(public forgotuseridService:ForgotuseridServiceService) { }
-fu= new User()
-uidFlag:boolean=true;
-uid:string="";
-uidMessage:boolean=false;
+  constructor(public forgotuseridService:ForgotuseridServiceService,public route:Router) { }
+fu= new User();
 invalidIdFlag:boolean=false;
   ngOnInit(): void {
   }
@@ -25,9 +23,8 @@ check(){
   this.forgotuseridService.getUser(this.fu).subscribe(result=>{
     console.log(result);
     if(result.userId!=null){
-      this.uidFlag=false;
-      this.uidMessage=true;
-      this.uid="Your user id is "+result.userId;
+      alert("Your user ID is "+result.userId);
+      this.route.navigate(['/login']);
 
     }
     else{
