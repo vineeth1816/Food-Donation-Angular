@@ -14,6 +14,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { EventEmitterService } from './event-emitter-service.service';
+import { PasswordResetComponent } from './password-reset/password-reset.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { EventEmitterService } from './event-emitter-service.service';
     ForgotUserIdComponent,
     ForgotPasswordComponent,
     AdminDashboardComponent,
-    UserDashboardComponent
+    UserDashboardComponent,
+    PasswordResetComponent
   ],
   imports: [
     BrowserModule,

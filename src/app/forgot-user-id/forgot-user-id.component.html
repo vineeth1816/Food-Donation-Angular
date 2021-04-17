@@ -1,7 +1,8 @@
-<div class="container h-100">
+<div *ngIf="uidFlag" class="container h-100">
     <div class="row h-100 justify-content-center align-items-center">
         <div class="col-10 col-md-8 col-lg-6">
             <!-- Form -->
+            <p *ngIf="invalidIdFlag" class="text-danger">Enter valid details</p>
             <form class="form-example"  #useridrecovery="ngForm">
                 <h1>USER-ID RECOVERY</h1>
                
@@ -9,7 +10,7 @@
                 <div class="form-group">
                     <label for="Contactno">Contactno:</label>
                     <input type="tel" class="form-control Contactno" id="Contactno" placeholder="Enter Contactno..."
-                        name="Contactno" ngModel pattern="[0-9]{10}" minlength="10"  #Contactno="ngModel" required>
+                        name="Contactno" ngModel pattern="[0-9]{10}" minlength="10" [(ngModel)]="fu.contactNo"  #Contactno="ngModel" required>
                         <small class="text-danger" *ngIf="Contactno.invalid && Contactno.touched">
                             <small *ngIf="Contactno.errors.required" class="text-danger">Contact number is mandatory</small>
                             <small *ngIf="Contactno.errors.pattern" class="text-danger">
@@ -18,10 +19,10 @@
                             <small *ngIf="Contactno.errors.maxlength" class="text-danger">Contact number should  not be more than digits.</small>-->
                         </small>
                 </div>
-                <div class="form-group">
+                <div class="form-group" >
                     <label for="Emailid">Emailid:</label>
                     <input type="email" class="form-control email" id="Emailid" placeholder="Enter Emailid..."
-                        name="Emailid" ngModel pattern="^[a-zA-Z0-9_.-]+@[a-zA-Z0-9.-]+$" #Emailid="ngModel" required>
+                        name="Emailid" ngModel [(ngModel)]="fu.emailId" pattern="^[a-zA-Z0-9_.-]+@[a-zA-Z0-9.-]+$" #Emailid="ngModel" required>
                         <small *ngIf="Emailid.invalid && Emailid.touched" class="text-danger">
                            <small *ngIf="Emailid.errors.required" class="text-danger">Emailid is mandatory.</small>
                            <small *ngIf="Emailid.errors.pattern" class="text-danger">Please enter a valid Emailid.</small>
@@ -30,7 +31,7 @@
                 <div class="form-group">
                     <label for="SQ1">What is  your nick name ?</label>
                     <input type="text" class="form-control text" id="SQ1" placeholder="ENTER ANSWER..."
-                        name="SQ1" ngModel #SQ1="ngModel" required>
+                        name="SQ1" ngModel #SQ1="ngModel" [(ngModel)]="fu.sq1" required>
                         <small *ngIf="SQ1.invalid && SQ1.touched" class="text-danger">
                             <small *ngIf="Emailid.errors.required" class="text-danger" >Please answer this question.</small>
                          </small>
@@ -38,7 +39,7 @@
                 <div class="form-group">
                     <label for="SQ2">What is the name of your first school name ?</label>
                     <input type="text" class="form-control text" id="SQ2" placeholder="ENTER ANSWER..."
-                        name="SQ2" ngModel #SQ2="ngModel" required>
+                        name="SQ2" ngModel #SQ2="ngModel"  [(ngModel)]="fu.sq2"required>
                         <small *ngIf="SQ2.invalid && SQ2.touched" class="text-danger">
                             <small *ngIf="SQ2.errors.required" class="text-danger">Please answer this question.</small>
                          </small>
@@ -46,15 +47,18 @@
                 <div class="form-group">
                     <label for="SQ3">What is your favourite colour ?</label>
                     <input type="text" class="form-control text" id="SQ3" placeholder="ENTER ANSWER..."
-                        name="SQ3" ngModel #SQ3="ngModel" required>
+                        name="SQ3" ngModel #SQ3="ngModel" [(ngModel)]="fu.sq3" required>
                         <small *ngIf="SQ3.invalid && SQ3.touched" class="text-danger">
                             <small *ngIf="SQ3.errors.required" class="text-danger">Please answer this question.</small>
                          </small>
                 </div>
-                <button type="submit" class="btn btn-primary btn-customized" [disabled]="useridrecovery.form.invalid">SUBMIT</button>
+                <button type="submit" class="btn btn-primary btn-customized" (click)="check()" [disabled]="useridrecovery.form.invalid">SUBMIT</button>
                 
             </form>
             <!-- Form end -->
         </div>
     </div>
+</div>
+<div *ngIf="uidMessage" class="text-success">
+{{uid}}
 </div>
