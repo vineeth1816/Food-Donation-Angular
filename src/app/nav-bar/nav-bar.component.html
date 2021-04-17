@@ -3,13 +3,14 @@
     <a class="navbar-brand" routerLink="/">Navbar</a>
     <form class="form-inline">
         
+      
         
-        
-            
-      <button routerLink="register" class="btn btn-outline-warning my-2 my-sm-0 mr-sm-3"  type="submit">Register</button>
+      <div *ngIf="flag">      
+      <button routerLink="register"   class="btn btn-outline-warning my-2 my-sm-0 mr-sm-3"  type="submit">Register</button>
       <button routerLink="login" class="btn btn-outline-primary my-2 my-sm-0" type="submit">Login</button>
      
-      
+      </div>
+      <button *ngIf="logoutFlag" class="btn btn-outline-warning my-2 my-sm-0" (click)="validate()">Log Out</button>
     </form>
   </nav>
   

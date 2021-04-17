@@ -11,6 +11,9 @@ import { ForgotUserIdComponent } from './forgot-user-id/forgot-user-id.component
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { EventEmitterService } from './event-emitter-service.service';
 
 @NgModule({
   declarations: [
@@ -20,15 +23,19 @@ import {HttpClientModule} from '@angular/common/http';
     RegisterFormComponent,
     LoginFormComponent,
     ForgotUserIdComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    AdminDashboardComponent,
+    UserDashboardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    EventEmitterService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ForgotUserIdComponent } from './forgot-user-id/forgot-user-id.component';
 import { HomeComponent } from './home/home.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 
 const routes: Routes = [
   {path:'register',component:RegisterFormComponent},
@@ -12,7 +14,9 @@ const routes: Routes = [
 
   {path:'',component:HomeComponent},
   {path:'login/forgotUserId',component:ForgotUserIdComponent},
-  {path:'login/forgotpassword',component:ForgotPasswordComponent}
+  {path:'login/forgotpassword',component:ForgotPasswordComponent},
+  {path:'admin',component:AdminDashboardComponent},
+  {path:'user',component:UserDashboardComponent}
 
 ];
 

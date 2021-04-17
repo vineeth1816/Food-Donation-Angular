@@ -1,25 +1,27 @@
-<div class="container h-100 ">
+<div   class="container h-100 ">
     <div class="row h-100 justify-content-center align-items-center">
         <div class="col-10 col-md-8 col-lg-6">
             <!-- Form -->
-            <form class="form-example" #loginForm="ngForm" >
+            <form class="form-example" #loginForm="ngForm" (ngSubmit)="validate(loginForm)">
                 <h1>Login</h1>
-                <p class="description">If you are already a registered user login using your email id and password
-                </p>
+                <p class="description">If you are already a registered user login using your email id and password </p>
                 <!-- Input fields -->
                 <div class="form-group">
                     <label for="username">User Id:</label>
-                    <input type="text" class="form-control username"  placeholder="Enter Username" name="username" ngModel #username="ngModel" required>
+                    <input type="text" class="form-control username"  placeholder="Enter Username" [(ngModel)]="u.userId" name="username" ngModel #username="ngModel" required>
                     <div *ngIf="username.invalid && username.touched" class="text-danger">
                         <div *ngIf="username.errors.required">Username is required</div>
                     </div>
+                    <div *ngIf="idFlag" class="text-danger">User ID not present</div>
                 </div>
                 <div class="form-group">
                     <label for="password">Password:</label>
-                    <input type="password" class="form-control password"  placeholder="Enter Password" name="password" ngModel #password="ngModel" required>
+                    <input type="password" class="form-control password"  placeholder="Enter Password" [(ngModel)]="u.password" name="password" ngModel #password="ngModel" required>
                         <div *ngIf="password.invalid && password.touched" class="text-danger">
                             <div *ngIf="password.errors.required">Password is required</div>
                         </div>
+                    <div *ngIf="passFlag" class="text-danger">Password not matching</div>
+
                 </div>
                 <div class="form-group">
                 <a routerLink="forgotUserId">Forgot UserId?</a>    
@@ -27,7 +29,7 @@
                 <div class="form-group">
                     <a routerLink="forgotpassword">Forgot Password?</a>
                 </div>
-                <button type="submit" class="btn btn-primary btn-customized">Login</button>
+                <button type="submit" [disabled]="loginForm.form.invalid" class="btn btn-primary btn-customized">Login</button>
                 
             </form>
             <!-- Form end -->
