@@ -4,6 +4,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ForgotUserIdComponent } from './forgot-user-id/forgot-user-id.component';
 import { HomeComponent } from './home/home.component';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { PasswordResetComponent } from './password-reset/password-reset.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 
 const routes: Routes = [
@@ -12,7 +13,8 @@ const routes: Routes = [
 
   {path:'',component:HomeComponent},
   {path:'login/forgotUserId',component:ForgotUserIdComponent},
-  {path:'login/forgotpassword',component:ForgotPasswordComponent}
+  {path:'login/forgotpassword',component:ForgotPasswordComponent},
+  {path:'login/forgotpassword/passwordReset',component:PasswordResetComponent}
 
 ];
 
