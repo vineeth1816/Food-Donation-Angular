@@ -56,6 +56,7 @@ export class BlogsComponent implements OnInit  {
       error=>alert("Server error. Please try again")
     );
     
+    
   }
   updateBlog(id:number){
     this.message="Update blog";
