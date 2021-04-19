@@ -15,6 +15,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { EventEmitterService } from './event-emitter-service.service';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
+import { BlogsComponent } from './blogs/blogs.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { PasswordResetComponent } from './password-reset/password-reset.componen
     ForgotPasswordComponent,
     AdminDashboardComponent,
     UserDashboardComponent,
-    PasswordResetComponent
+    PasswordResetComponent,
+    BlogsComponent
   ],
   imports: [
     BrowserModule,
