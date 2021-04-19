@@ -33,8 +33,7 @@ export class LoginFormComponent implements OnInit {
 
     // alert("New user created Successfully");
     
-      //  this.child.buttonDisable();
-      alert("login");
+      
     console.log(this.u);
     this.loginService.loginUser(this.u)
     .subscribe(result=>{

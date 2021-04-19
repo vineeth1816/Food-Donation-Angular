@@ -8,15 +8,54 @@
         
       <div>      
 
-      <button routerLink="login" class="btn btn-outline-success my-2 my-sm-0" type="submit">Post New</button>
-     
+      <button   *ngIf="HomeFlag" class="btn btn-outline-success my-2 my-sm-0" (click)="viewPostForm()" type="submit">Post New</button>
+      <button  *ngIf="updateDivFlag"class="btn btn-outline-primary my-2 my-sm-0" (click)="ngOnInit()"type="submit">View All Blogs</button>
+      <button  *ngIf="updateFlag"class="btn btn-outline-primary my-2 my-sm-0" (click)="ngOnInit()"type="submit">View All Blogs</button>
+      <button  *ngIf="viewFlag"class="btn btn-outline-primary my-2 my-sm-0" (click)="ngOnInit()"type="submit">View All Blogs</button>
       </div>
       
     </form>
   </nav>
   <div class="container border border-dark rounded col-sm-12">
     
-    <div *ngFor="let blog of blogs">
+    
+    
+      <div *ngIf="updateDivFlag"  class="container h-100 ">
+        <div class="row h-100 justify-content-center align-items-center">
+            <div class="col-10 col-md-8 col-lg-6">
+                <!-- Form -->
+                <form class="form-example" #blogPost="ngForm" (ngSubmit)="insert(blogPost)">
+                    <h1>Post New Blog</h1>
+                    
+                    <!-- Input fields -->
+                    <div class="form-group">
+                        <label for="username">Title:</label>
+                        <input type="text" class="form-control username"  placeholder="Enter blog title" [(ngModel)]="blog.blog_Title" name="title" ngModel #title="ngModel" required>
+                        <div *ngIf="title.invalid && title.touched" class="text-danger">
+                            <div *ngIf="title.errors.required">Title is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Description:</label>
+                        <textarea class="form-control"  placeholder="Enter blog content" [(ngModel)]="blog.description" name="description" ngModel #description="ngModel" required></textarea>
+                            <div *ngIf="description.invalid && description.touched" class="text-danger">
+                                <div *ngIf="description.errors.required">Please add content</div>
+                            </div>    
+                    </div>
+                   
+                    <button type="submit" [disabled]="blogPost.form.invalid" class="btn btn-primary btn-customized">Post</button>
+                    
+                </form>
+                <!-- Form end -->
+            </div>
+        </div>
+        </div>
+
+
+
+
+        <div *ngIf="HomeFlag" >
+    <div  *ngFor="let blog of blogs">
       <div class="row border border-dark rounded col-sm-12 ml-sm-1 mt-sm-2 p-3 mb-sm-2">
       
       <div class="col-sm-6 text-dark text-center">
@@ -33,10 +72,66 @@
       </div>
      </div>
     </div>
-    <div>
-      
     </div>
-    <div></div>
+
+
+
+    <div  *ngIf="updateFlag"class="container h-100 ">
+      <div class="row h-100 justify-content-center align-items-center">
+          <div class="col-10 col-md-8 col-lg-6">
+              <!-- Form -->
+              <form class="form-example" #blogPost="ngForm" (ngSubmit)="updateBlog1(blogPost)">
+                  <h1>Update Blog</h1>
+                  
+                  <!-- Input fields -->
+                  <div class="form-group">
+                      <label for="username">Title:</label>
+                      <input type="text" class="form-control username"  placeholder="Enter blog title" [(ngModel)]="blog.blog_Title" name="title" ngModel #title="ngModel" required>
+                      <div *ngIf="title.invalid && title.touched" class="text-danger">
+                          <div *ngIf="title.errors.required">Title is required</div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <label for="password">Description:</label>
+                      <textarea class="form-control"  placeholder="Enter blog content" [(ngModel)]="blog.description" name="description" ngModel #description="ngModel" required></textarea>
+                          <div *ngIf="description.invalid && description.touched" class="text-danger">
+                              <div *ngIf="description.errors.required">Please add content</div>
+                          </div>    
+                  </div>
+                 
+                  <button type="submit" [disabled]="blogPost.form.invalid" class="btn btn-primary btn-customized">Update</button>
+                  
+              </form>
+              <!-- Form end -->
+          </div>
+      </div>
+      </div>
+
+      <div *ngIf="viewFlag" class="container h-100 ">
+        <div class="row h-100 justify-content-center align-items-center">
+            <div class="col-10 col-md-8 col-lg-6">
+                <!-- Form -->
+                    <h1 class="text-center">{{blog.blog_Title}}</h1>
+                    <p>{{blog.description}}</p>
+                    
+                    
+                   
+        
+                    
+              
+                <!-- Form end -->
+            </div>
+        </div>
+        </div>
+
+
+
+
+
+
+
+  </div>
     
-    </div>
+    
 </div>
+

@@ -15,4 +15,8 @@ export class LoginserviceService {
     {firstName:user.firstName,lastName:user.lastName,dob:user.dob,gender:user.gender,emailId:user.emailId,contactNo:user.contactNo,userCategory:user.userCategory,userId:user.userId,password:user.password,sq1:user.sq1,sq2:user.sq2,sq3:user.sq3},
     {responseType:"json"});
   }
+
+  getUser(user:User):Observable<User>{
+    return this.httpClient.get<User>('http://localhost:8080/getUser/'+user.userId,{responseType:"json"});
+  }
 }
