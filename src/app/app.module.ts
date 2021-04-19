@@ -16,6 +16,7 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { EventEmitterService } from './event-emitter-service.service';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
 import { BlogsComponent } from './blogs/blogs.component';
+import { DonateFoodComponent } from './donate-food/donate-food.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { BlogsComponent } from './blogs/blogs.component';
     AdminDashboardComponent,
     UserDashboardComponent,
     PasswordResetComponent,
-    BlogsComponent
+    BlogsComponent,
+    DonateFoodComponent
   ],
   imports: [
     BrowserModule,

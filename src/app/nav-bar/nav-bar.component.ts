@@ -20,7 +20,7 @@ export class NavBarComponent implements OnInit {
   featureFlag: boolean = false;
   user = new User();
   ngOnInit() {
-    
+    this.featureFlag=true;
     if (this.eventEmitterService.subsVar == undefined) {
       this.eventEmitterService.subsVar = this.eventEmitterService.
         invokeFirstComponentFunction.subscribe((name: string) => {
@@ -55,6 +55,7 @@ export class NavBarComponent implements OnInit {
         console.log(result);
         console.log(this.featureFlag);
         if (this.userCategory == "Food Donor") {
+          console.log("inside Food Donor")
           this.featureFlag = true;
           this.requestOption = "Donate Food";
           this.requestStatus = "Donation Status";
