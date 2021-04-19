@@ -17,11 +17,21 @@
   <div class="container border border-dark rounded col-sm-12">
     
     <div *ngFor="let blog of blogs">
-      <div class=" border border-dark rounded col-sm-12">
-        {{blog.blog_ID}}
-        {{blog.blog_Title}}
-        {{blog.description}}
-        </div>
+      <div class="row border border-dark rounded col-sm-12 ml-sm-1 mt-sm-2 p-3 mb-sm-2">
+      
+      <div class="col-sm-6 text-dark text-center">
+        <p>{{blog.blog_Title}}</p>
+      </div>
+      <div class="col-sm-2 text-center font-weight-bold">
+      <button class="btn btn-outline-primary my-2 my-sm-0" (click)="viewBlog(blog.blog_ID)">VIEW</button>
+      </div>
+      <div class="col-sm-2 text-center">
+      <button  class="btn btn-outline-warning my-2 my-sm-0" (click)="updateBlog(blog.blog_ID)">UPDATE</button>
+      </div>
+      <div class="col-sm-2 text-center">
+      <button  class="btn btn-outline-danger my-2 my-sm-0" (click)="deleteBlog(blog.blog_ID)">DELETE</button>  
+      </div>
+     </div>
     </div>
     <div>
       
