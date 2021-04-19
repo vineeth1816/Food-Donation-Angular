@@ -6,12 +6,17 @@ import { Subscription } from 'rxjs/internal/Subscription';
 })    
 export class EventEmitterService {    
     
-  invokeFirstComponentFunction = new EventEmitter();    
+  invokeFirstComponentFunction = new EventEmitter(); 
+   
+  
   subsVar: Subscription;    
+  
     
   constructor() { }    
     
   onFirstComponentButtonClick() {    
     this.invokeFirstComponentFunction.emit();    
-  }    
+  }
+  
+  
 } 

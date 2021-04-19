@@ -14,42 +14,77 @@ import { User } from '../User';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(private eventEmitterService:EventEmitterService,public router:Router,public loginService:LoginserviceService) { }
+  constructor(private eventEmitterService: EventEmitterService, public router: Router, public loginService: LoginserviceService) { }
 
-flag:boolean=true;
-user=new User();
-ngOnInit() {   
-     
-    if (this.eventEmitterService.subsVar==undefined) {    
-      this.eventEmitterService.subsVar = this.eventEmitterService.    
-      invokeFirstComponentFunction.subscribe((name:string) => {    
-        this.buttonDisable();    
-      });
-    }    
+  flag: boolean = true;
+  featureFlag: boolean = false;
+  user = new User();
+  ngOnInit() {
+    
+    if (this.eventEmitterService.subsVar == undefined) {
+      this.eventEmitterService.subsVar = this.eventEmitterService.
+        invokeFirstComponentFunction.subscribe((name: string) => {
+          this.buttonDisable();
+        });
+    }
   }
-  logoutFlag:boolean=false;
-  message:string="Welcome";
-  buttonDisable(){
-    this.flag=false;
-    this.logoutFlag=true;
-    
-    
-    this.user.userId=localStorage.getItem('userId').substr(1,localStorage.getItem('userId').length-2);
+  logoutFlag: boolean = false;
+  message: string = "Welcome";
+  userCategory: String;
+  requestOption: String;
+  requestStatus: String;
+  buttonDisable() {
+    this.flag = false;
+    this.logoutFlag = true;
+
+
+
+    this.user.userId = localStorage.getItem('userId').substr(1, localStorage.getItem('userId').length - 2);
+    if (this.user.userId == "admin")
+      this.featureFlag = false;
+    else
+      this.featureFlag = true;
+
     console.log(this.user);
-    
+
     this.loginService.getUser(this.user)
-    .subscribe(result=> this.message="Welcome, "+result.firstName+" "+result.lastName,
-    error=>this.message="lollll");
+      .subscribe(result => {
+        this.message = "Welcome, " + result.firstName + " " + result.lastName;
+        this.userCategory = result.userCategory;
+        console.log(this.userCategory);
+        console.log(result);
+        console.log(this.featureFlag);
+        if (this.userCategory == "Food Donor") {
+          this.featureFlag = true;
+          this.requestOption = "Donate Food";
+          this.requestStatus = "Donation Status";
+        }
+        else if (this.userCategory == "NGO PoC") {
+          this.featureFlag = true;
+          this.requestOption = "Request Food";
+          this.requestStatus = "Request Status";
+        } else if (this.userCategory == "Logistics Sponser") {
+          console.log("inside logistics");
+          this.featureFlag = true;
+          this.requestOption = "Sponsor Logistics";
+          this.requestStatus = "Sponser Status";
+        }
+        else {
+          console.log("all failed");
+        }
+      },
+        error => this.message = "lollll");
 
   }
-  
-  validate(){
+
+  validate() {
+    this.featureFlag = false;
     localStorage.removeItem('userId');
-    this.logoutFlag=false;
-    this.flag=true;
+    this.logoutFlag = false;
+    this.flag = true;
     this.router.navigate(['/login']);
-    
+
   }
-  
+
 
 }

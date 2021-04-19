@@ -1,18 +1,30 @@
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
-    <a class="navbar-brand" routerLink="/">FDP</a>
-    <form class="form-inline">
-        
-      
-        
-      <div *ngIf="flag">      
-      <button routerLink="register"   class="btn btn-outline-warning my-2 my-sm-0 mr-sm-3"  type="submit">Register</button>
+  <a class="navbar-brand" routerLink="/">FDP</a>
+  <div *ngIf="featureFlag" class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link text-light" routerLink="blogs">Blogs <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">{{requestOption}}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">{{requestStatus}}</a>
+      </li>
+
+    </ul>
+  </div>
+
+
+
+  <form class="form-inline">
+    <div *ngIf="flag">
+      <button routerLink="register" class="btn btn-outline-warning my-2 my-sm-0 mr-sm-3" type="submit">Register</button>
       <button routerLink="login" class="btn btn-outline-primary my-2 my-sm-0" type="submit">Login</button>
-     
-      </div>
-      <p *ngIf="logoutFlag" class="text-light mt-3">{{message}}</p>
-      &nbsp;&nbsp;&nbsp;
-      <button *ngIf="logoutFlag" class="btn btn-outline-warning my-2 my-sm-0" (click)="validate()">Log Out</button>
-    </form>
-  </nav>
-  
+
+    </div>
+    <p *ngIf="logoutFlag" class="text-light mt-3">{{message}}</p>
+    &nbsp;&nbsp;&nbsp;
+    <button *ngIf="logoutFlag" class="btn btn-outline-warning my-2 my-sm-0" (click)="validate()">Log Out</button>
+  </form>
+</nav>
