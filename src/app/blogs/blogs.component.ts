@@ -25,6 +25,7 @@ export class BlogsComponent implements OnInit  {
   viewBlog(id:number){
     console.log(id);
     
+    
   }
   updateBlog(id:number){
     console.log(id); 
