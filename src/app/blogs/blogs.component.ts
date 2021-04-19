@@ -1,16 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { BlogServiceService } from '../blog-service.service';
 
 @Component({
   selector: 'app-blogs',
   templateUrl: './blogs.component.html',
   styleUrls: ['./blogs.component.css']
 })
-export class BlogsComponent implements OnInit {
+export class BlogsComponent implements OnInit  {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(public blogUtility:BlogServiceService) { 
+    
   }
-  message:string="Blog";
 
+  blogs:any;
+  message:string="Blogs";
+  ngOnInit(): void {
+    this.blogUtility.getBlogs()
+    .subscribe(result=>{
+      this.blogs=result;
+    console.log(this.blogs[0]);},error=>console.log("Server error"));
+  }
+  
+    
 }
+

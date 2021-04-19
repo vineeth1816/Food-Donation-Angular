@@ -16,5 +16,17 @@
   </nav>
   <div class="container border border-dark rounded col-sm-12">
     
+    <div *ngFor="let blog of blogs">
+      <div class=" border border-dark rounded col-sm-12">
+        {{blog.blog_ID}}
+        {{blog.blog_Title}}
+        {{blog.description}}
+        </div>
+    </div>
+    <div>
+      
+    </div>
+    <div></div>
+    
     </div>
 </div>
