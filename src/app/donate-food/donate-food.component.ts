@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { DonationrequestserviceService } from '../donationrequestservice.service';
 import { FoodDonationRequest } from '../FoodDonationRequest';
 
 @Component({
@@ -9,12 +11,19 @@ import { FoodDonationRequest } from '../FoodDonationRequest';
 })
 export class DonateFoodComponent implements OnInit {
 req=new FoodDonationRequest();
-  constructor() { }
+  constructor(public donationRequestService:DonationrequestserviceService,public router:Router) { }
 
   ngOnInit(): void {
   }
   validate(myForm:NgForm){
-    
+    console.log(this.req)
+    this.donationRequestService.insertDonationRequest(this.req)
+    .subscribe(result=>{
+      console.log(result);
+      alert('Request Sent Successfully');
+      this.router.navigate(['/View Request'])
+    },error=>console.log("Request not sent due to server error"))
+
   }
 
 }
