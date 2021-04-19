@@ -11,9 +11,22 @@ export class DonationsStatusComponent implements OnInit {
   constructor(public donationService:DonationServiceService) { }
 
   requests:any;
+  flag:boolean=false;
+  message:string;
   ngOnInit(): void {
 
-    
+    this.donationService.getAllRequests()
+    .subscribe(result=>this.requests=result,error=>alert("Server error"));
+  }
+  viewStatus(id:number){
+    this.flag=true;
+    console.log(id);
+    for (var val of this.requests) {
+      if(val.donationId===id){
+        console.log(val);
+        this.message=val.status;
+      } // prints values: 10, 20, 30, 40
+    }
   }
 
 }
