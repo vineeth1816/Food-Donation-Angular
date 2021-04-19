@@ -8,7 +8,8 @@
         
       <div>      
 
-      <button routerLink="login" class="btn btn-outline-success my-2 my-sm-0" type="submit">Post New</button>
+      <button  *ngIf="flag" class="btn btn-outline-success my-2 my-sm-0" type="submit">Post New</button>
+      <button  *ngIf="!flag" class="btn btn-outline-primary my-2 my-sm-0" type="submit">View All Blogs</button>
      
       </div>
       
@@ -16,15 +17,41 @@
   </nav>
   <div class="container border border-dark rounded col-sm-12">
     
-    <div *ngFor="let blog of blogs">
+    <!-- <div *ngFor="let blog of blogs">
       <div class=" border border-dark rounded col-sm-12">
-        {{blog.blog_ID}}
-        {{blog.blog_Title}}
-        {{blog.description}}
+      </div>
+    </div> -->
+    <div>
+      <div   class="container h-100 ">
+        <div class="row h-100 justify-content-center align-items-center">
+            <div class="col-10 col-md-8 col-lg-6">
+                <!-- Form -->
+                <form class="form-example" #blogPost="ngForm" (ngSubmit)="insert(blogPost)">
+                    <h1>Post New Blog</h1>
+                    
+                    <!-- Input fields -->
+                    <div class="form-group">
+                        <label for="username">Title:</label>
+                        <input type="text" class="form-control username"  placeholder="Enter blog title" [(ngModel)]="blog.blog_Title" name="title" ngModel #title="ngModel" required>
+                        <div *ngIf="title.invalid && title.touched" class="text-danger">
+                            <div *ngIf="title.errors.required">Title is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Description:</label>
+                        <textarea class="form-control"  placeholder="Enter blog content" [(ngModel)]="blog.description" name="description" ngModel #description="ngModel" required></textarea>
+                            <div *ngIf="description.invalid && description.touched" class="text-danger">
+                                <div *ngIf="description.errors.required">Please add content</div>
+                            </div>    
+                    </div>
+                   
+                    <button type="submit" [disabled]="blogPost.form.invalid" class="btn btn-primary btn-customized">Post</button>
+                    
+                </form>
+                <!-- Form end -->
+            </div>
         </div>
     </div>
-    <div>
-      
     </div>
     <div></div>
     
