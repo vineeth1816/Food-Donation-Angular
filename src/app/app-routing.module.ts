@@ -4,6 +4,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { BlogsComponent } from './blogs/blogs.component';
 import { DonateFoodComponent } from './donate-food/donate-food.component';
 import { DonationsStatusComponent } from './donations-status/donations-status.component';
+import { FoodRequestComponent } from './food-request/food-request.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ForgotUserIdComponent } from './forgot-user-id/forgot-user-id.component';
 import { HomeComponent } from './home/home.component';
@@ -23,8 +24,12 @@ const routes: Routes = [
   {path:'user',component:UserDashboardComponent},
   {path:'login/forgotpassword/passwordReset',component:PasswordResetComponent},
   {path:'blogs',component:UserDashboardComponent},
+  {path:'adminBlogs',component:BlogsComponent},
   {path:'Donate Food',component:DonateFoodComponent},
-  {path:'View Request',component:DonationsStatusComponent}
+  {path:'View Request',component:DonationsStatusComponent},
+  {path:'Dashboard',component:AdminDashboardComponent},
+  {path:'NGO PoC',component:FoodRequestComponent}
+  
 
 ];
 

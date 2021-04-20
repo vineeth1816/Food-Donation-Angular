@@ -18,6 +18,8 @@ import { PasswordResetComponent } from './password-reset/password-reset.componen
 import { BlogsComponent } from './blogs/blogs.component';
 import { DonateFoodComponent } from './donate-food/donate-food.component';
 import { DonationsStatusComponent } from './donations-status/donations-status.component';
+import { ViewDonationRequestsComponent } from './view-donation-requests/view-donation-requests.component';
+import { FoodRequestComponent } from './food-request/food-request.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { DonationsStatusComponent } from './donations-status/donations-status.co
     PasswordResetComponent,
     BlogsComponent,
     DonateFoodComponent,
-    DonationsStatusComponent
+    DonationsStatusComponent,
+    ViewDonationRequestsComponent,
+    FoodRequestComponent
   ],
   imports: [
     BrowserModule,

@@ -1,19 +1,20 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
-  <a class="navbar-brand" routerLink="/">FDP</a>
+  <a class="navbar-brand">Food Donation</a>
   <div *ngIf="featureFlag" class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
-      <li class="nav-item active">
+      <li *ngIf="blogsFlag" class="nav-item active">
         <a class="nav-link text-light" routerLink="blogs">Blogs <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [href]="requestOption">{{requestOption}}</a>
+        <a class="nav-link" routerLink="{{requestOption}}">{{requestOption}}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [href]="requestStatus">{{requestStatus}}</a>
+        <a class="nav-link" routerLink="{{requestStatus}}">{{requestStatus}}</a>
       </li>
 
     </ul>
   </div>
+  
 
 
 

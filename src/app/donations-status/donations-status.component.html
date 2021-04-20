@@ -22,12 +22,12 @@
                         </tr>
                         <tr *ngFor="let request of requests">
                             <td><button (click)="viewStatus(request.donationId)">{{request.donationId}}</button></td>
-                            <td *ngif="detailsFlag">{{request.name}}</td>
-                            <td *ngif="detailsFlag">{{request.location}}</td>
-                            <td *ngif="detailsFlag">{{request.contactNo}}</td>
-                            <td *ngif="detailsFlag">{{request.purpose}}</td>
-                            <td *ngif="detailsFlag">{{request.noOfPackets}}</td>
-                            <td *ngIf="flag">{{message}}</td>
+                            <td>{{request.name}}</td>
+                            <td>{{request.location}}</td>
+                            <td>{{request.contactNo}}</td>
+                            <td>{{request.purpose}}</td>
+                            <td>{{request.noOfPackets}}</td>
+                            <td class="text-danger" id="{{request.donationId}}"></td>
                         </tr>
                     </div>
                 

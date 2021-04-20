@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { mergeAnalyzedFiles } from '@angular/compiler';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { DonationServiceService } from '../donation-service.service';
 
 @Component({
@@ -8,17 +10,22 @@ import { DonationServiceService } from '../donation-service.service';
 })
 export class DonationsStatusComponent implements OnInit {
 
-  constructor(public donationService:DonationServiceService) { }
+  constructor(public donationService:DonationServiceService,public router:Router) { }
 
   requests:any;
   flag:boolean=false;
   message:string;
+  request:any;
+  element:HTMLElement;
   userId:String;
-  
-  ngOnInit(): void {
-     this.userId=localStorage.getItem('userId').substr(1, localStorage.getItem('userId').length - 2);
-    if(this.userId=="admin")
-    {
+       @ViewChild('myTd') myTd:ElementRef;  
+      ngOnInit(): void {
+ if(localStorage.getItem('userId')==null){
+      this.router.navigate(['/login']);
+      
+    }
+    this.userId=localStorage.getItem('userId').substr(1, localStorage.getItem('userId').length - 2);
+    if(this.userId=="admin"){
     this.donationService.getAllRequests()
     .subscribe(result=>this.requests=result,error=>alert("Server error"));
     }
@@ -29,13 +36,32 @@ export class DonationsStatusComponent implements OnInit {
     }
   }
   viewStatus(id:number){
-    this.flag=true;
+    if(this.element==undefined){
+     
+    this.displayStatusMessage(id);
+  
+
+      
+    }
+    else{
+      this.element.innerHTML="";
+      this.displayStatusMessage(id);
+    }
+  }
+  displayStatusMessage(id:number){
+      this.flag=true;
     console.log(id);
     for (var val of this.requests) {
       if(val.donationId===id){
         console.log(val);
+        this.request=val.donationId;
+        this.element=document.getElementById(this.request) as HTMLElement;
+        console.log(this.request)
         this.message=val.status;
-      } // prints values: 10, 20, 30, 40
+        this.element.innerHTML=this.message;
+        
+
+      } 
     }
   }
 
