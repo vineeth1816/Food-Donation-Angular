@@ -34,12 +34,12 @@
                         <td>
                             <p>
                                 <button type="button" class="btn btn-outline-primary"
-                                    (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="isCollapsed"
+                                    (click)="isCollapsed[i] = !isCollapsed[i]" [attr.aria-expanded]=true
                                     aria-controls="{{i}}">
                                     {{request.donationId}}
                                 </button>
                             </p>
-                            <div id="{{i}}" [ngbCollapse]="!isCollapsed">
+                            <div id="{{i}}" [ngbCollapse]="isCollapsed[i]">
                                 <div class="card">
                                     <div class="card-body">
                                         <label class="font-weight-bold">Name:</label> {{request.name}}  {{i}}<br>
@@ -48,6 +48,8 @@
                                         <label class="font-weight-bold">Purpose:</label>{{request.purpose}}<br>
                                         <label class="font-weight-bold">No of
                                             packets:</label>{{request.noOfPackets}}<br>
+                                            <button *ngFlag="statusFlag" (click)="Approve(request.donationId)" class="btn btn-success">Approve</button>&nbsp;&nbsp;&nbsp;
+                                            <button *ngFlag="statusFlag" class="btn btn-danger">Reject</button>
                                     </div>
                                 </div>
                             </div>

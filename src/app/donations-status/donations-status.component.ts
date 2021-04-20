@@ -19,7 +19,8 @@ export class DonationsStatusComponent implements OnInit {
   element:HTMLElement;
   userId:String;
   detailsFlag:boolean=true;
-  
+  statusFlag:boolean=true;
+  public isCollapsed: boolean[] = [true,true,true,true,true,true];
        @ViewChild('myTd') myTd:ElementRef;  
       ngOnInit(): void {
  if(localStorage.getItem('userId')==null){
@@ -67,6 +68,10 @@ export class DonationsStatusComponent implements OnInit {
 
       } 
     }
+  }
+
+  Approve(donationId:String){
+
   }
 
 }
