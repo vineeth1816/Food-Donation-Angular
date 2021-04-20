@@ -18,9 +18,12 @@ export class NavBarComponent implements OnInit {
   blogsFlag:boolean=true;
   flag: boolean = true;
   featureFlag: boolean = false;
+  loginFlag:boolean=true;
+  registerFlag:boolean=true;
   user = new User();
   ngOnInit() {
-    
+    this.loginFlag=true;
+    this.registerFlag=true;
     if (this.eventEmitterService.subsVar == undefined) {
       this.eventEmitterService.subsVar = this.eventEmitterService.
         invokeFirstComponentFunction.subscribe((name: string) => {
@@ -33,17 +36,15 @@ export class NavBarComponent implements OnInit {
   userCategory: String;
   requestOption: String;
   requestStatus: String;
+  userId:String;
   buttonDisable() {
     this.flag = false;
     this.logoutFlag = true;
-
-
-
+    this.featureFlag=true;
+    this.loginFlag=false;
+    
     this.user.userId = localStorage.getItem('userId').substr(1, localStorage.getItem('userId').length - 2);
-    if (this.user.userId == "admin")
-      this.featureFlag = false;
-    else
-      this.featureFlag = true;
+   this.userId=this.user.userId;
 
     console.log(this.user);
 
@@ -58,7 +59,7 @@ export class NavBarComponent implements OnInit {
           console.log("inside Food Donor")
           this.featureFlag = true;
           this.requestOption = "Donate Food";
-          this.requestStatus = "View Request";
+          this.requestStatus = "View Requests";
         }
         else if (this.userCategory == "NGO PoC") {
           this.featureFlag = true;
@@ -72,6 +73,7 @@ export class NavBarComponent implements OnInit {
         }
         else if(this.userCategory=="Admin"){
           this.requestOption="Dashboard";
+          // this.requestOption="Dashboard";
           this.featureFlag=true;
           this.blogsFlag=false;
         }
@@ -81,12 +83,39 @@ export class NavBarComponent implements OnInit {
   }
 
   validate() {
+    
+    this.requestOption=null;
+    this.requestStatus=null;
     this.featureFlag = false;
+    this.registerFlag=true;
     localStorage.removeItem('userId');
+    this.userId=null;
     this.logoutFlag = false;
     this.flag = true;
-    this.router.navigate(['/login']);
+    this.loginFlag=true;
+    this.router.navigate(['/']);
 
+  }
+
+  login(){
+    
+    this.loginFlag=false;
+    this.router.navigate(['/login']);
+  }
+  
+  home(){
+    
+    if(this.userId==null)
+    {
+    this.loginFlag=true;
+      this.registerFlag=true;
+    }
+    this.router.navigate(['']);
+  }
+  register(){
+    
+    this.registerFlag=false;
+    this.router.navigate(['/register']);
   }
 
 

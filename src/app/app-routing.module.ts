@@ -26,7 +26,7 @@ const routes: Routes = [
   {path:'blogs',component:UserDashboardComponent},
   {path:'adminBlogs',component:BlogsComponent},
   {path:'Donate Food',component:DonateFoodComponent},
-  {path:'View Request',component:DonationsStatusComponent},
+  {path:'View Requests',component:DonationsStatusComponent},
   {path:'Dashboard',component:AdminDashboardComponent},
   {path:'NGO PoC',component:FoodRequestComponent}
   

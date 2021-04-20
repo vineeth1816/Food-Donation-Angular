@@ -7,30 +7,55 @@
     <div class="container border border-dark rounded col-sm-12">
         <div>
             <div>
-                
 
 
-                    <div class="table">
-                        <tr>
-                            <th>Request ID</th>
-                            <th>Name</th>
-                            <th>Location</th>
-                            <th>Contact no</th>
-                            <th>Purpose</th>
-                            <th>No of servings</th>
-                            <th>Status</th>
-                        </tr>
-                        <tr *ngFor="let request of requests">
-                            <td><button (click)="viewStatus(request.donationId)">{{request.donationId}}</button></td>
-                            <td>{{request.name}}</td>
-                            <td>{{request.location}}</td>
-                            <td>{{request.contactNo}}</td>
-                            <td>{{request.purpose}}</td>
-                            <td>{{request.noOfPackets}}</td>
-                            <td class="text-danger" id="{{request.donationId}}"></td>
-                        </tr>
-                    </div>
-                
+
+                <div class="table">
+                    <tr>
+                        <th>Request ID</th>
+                        <th *ngIf="detailsFlag">Name</th>
+                        <th *ngIf="detailsFlag">Location</th>
+                        <th *ngIf="detailsFlag">Contact no</th>
+                        <th *ngIf="detailsFlag">Purpose</th>
+                        <th *ngIf="detailsFlag">No of servings</th>
+                        <th *ngIf="detailsFlag">Status</th>
+                    </tr>
+                    <tr *ngFor="let request of requests">
+                        <td *ngIf="detailsFlag"><button class="btn btn-primary"
+                                (click)="viewStatus(request.donationId)">{{request.donationId}}</button></td>
+                        <td *ngIf="detailsFlag">{{request.name}}</td>
+                        <td *ngIf="detailsFlag">{{request.location}}</td>
+                        <td *ngIf="detailsFlag">{{request.contactNo}}</td>
+                        <td *ngIf="detailsFlag">{{request.purpose}}</td>
+                        <td *ngIf="detailsFlag">{{request.noOfPackets}}</td>
+                        <td *ngIf="detailsFlag" class="text-danger" id="{{request.donationId}}"></td>
+                    </tr>
+                    <tr *ngFor="let request of requests;let i=index">
+                        <td>
+                            <p>
+                                <button type="button" class="btn btn-outline-primary"
+                                    (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="isCollapsed"
+                                    aria-controls="{{i}}">
+                                    {{request.donationId}}
+                                </button>
+                            </p>
+                            <div id="{{i}}" [ngbCollapse]="!isCollapsed">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <label class="font-weight-bold">Name:</label> {{request.name}}  {{i}}<br>
+                                        <label class="font-weight-bold">Location:</label>{{request.location}}<br>
+                                        <label class="font-weight-bold">Contact no:</label>{{request.contactNo}}<br>
+                                        <label class="font-weight-bold">Purpose:</label>{{request.purpose}}<br>
+                                        <label class="font-weight-bold">No of
+                                            packets:</label>{{request.noOfPackets}}<br>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        
+                    </tr>
+                </div>
+
             </div>
         </div>
 

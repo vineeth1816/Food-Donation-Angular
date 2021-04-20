@@ -20,6 +20,8 @@ import { DonateFoodComponent } from './donate-food/donate-food.component';
 import { DonationsStatusComponent } from './donations-status/donations-status.component';
 import { ViewDonationRequestsComponent } from './view-donation-requests/view-donation-requests.component';
 import { FoodRequestComponent } from './food-request/food-request.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   declarations: [
@@ -44,6 +46,7 @@ import { FoodRequestComponent } from './food-request/food-request.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    NgbModule
   ],
   providers: [
     EventEmitterService
