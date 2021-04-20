@@ -17,6 +17,7 @@ req=new FoodDonationRequest();
   }
   validate(myForm:NgForm){
     console.log(this.req)
+    this.req.userId=localStorage.getItem('userId').substr(1, localStorage.getItem('userId').length - 2);
     this.donationRequestService.insertDonationRequest(this.req)
     .subscribe(result=>{
       console.log(result);

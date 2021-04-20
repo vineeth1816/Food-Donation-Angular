@@ -13,10 +13,20 @@ export class DonationsStatusComponent implements OnInit {
   requests:any;
   flag:boolean=false;
   message:string;
+  userId:String;
+  
   ngOnInit(): void {
-
+     this.userId=localStorage.getItem('userId').substr(1, localStorage.getItem('userId').length - 2);
+    if(this.userId=="admin")
+    {
     this.donationService.getAllRequests()
     .subscribe(result=>this.requests=result,error=>alert("Server error"));
+    }
+    else
+    {
+      this.donationService.getRequestById(this.userId)
+      .subscribe(result=>this.requests=result,error=>alert("Server error"));
+    }
   }
   viewStatus(id:number){
     this.flag=true;
