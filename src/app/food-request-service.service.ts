@@ -9,16 +9,16 @@ import { FoodRequest } from './FoodRequest';
 export class FoodRequestServiceService {
 
  constructor(public httpClient:HttpClient) { }
-  insertDonationRequest(foodDonationRequest:FoodRequest):Observable<FoodRequest>{
+  insertFoodRequest(foodRequest:FoodRequest):Observable<FoodRequest>{
     return this.httpClient.post<FoodRequest>('http://localhost:8080/insertFoodRequest',{
-    requestId:foodDonationRequest.requestId,
-    userId:foodDonationRequest.userId,
-    name:foodDonationRequest.name,
-    location:foodDonationRequest.location,
-    contactNo:foodDonationRequest.contactNo,
-    purpose:foodDonationRequest.occation,
-    noOfPackets:foodDonationRequest.noOfPacketsnumber,
-    date:foodDonationRequest.date,
-    status:foodDonationRequest.status
+    requestId:foodRequest.requestId,
+    userId:foodRequest.userId,
+    name:foodRequest.name,
+    location:foodRequest.location,
+    contactNo:foodRequest.contactNo,
+    occation:foodRequest.occation,
+    noOfPackets:foodRequest.noOfPacketsnumber,
+    date:foodRequest.date,
+    status:foodRequest.status
 },{responseType:"json"});
   }}

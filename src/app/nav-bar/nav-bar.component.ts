@@ -74,6 +74,7 @@ export class NavBarComponent implements OnInit {
           this.requestOption="Dashboard";
           this.featureFlag=true;
           this.blogsFlag=false;
+          
         }
       },
         error => this.message = "lollll");

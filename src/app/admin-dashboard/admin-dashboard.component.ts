@@ -26,7 +26,10 @@ export class AdminDashboardComponent implements OnInit {
     this.router.navigate(['/adminBlogs'])
   }
   viewDonationRequests(){
-    
+
+  }
+  raiseFoodRequest(){
+    this.router.navigate(['Request Food']);
   }
 
 
