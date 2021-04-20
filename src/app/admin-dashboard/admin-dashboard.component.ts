@@ -23,13 +23,14 @@ export class AdminDashboardComponent implements OnInit {
     }
   }
   viewBlogs(){
-    this.router.navigate(['/adminBlogs'])
+    this.router.navigate(['/adminBlogs']);
   }
   viewDonationRequests(){
 
   }
   raiseFoodRequest(){
     this.router.navigate(['Request Food']);
+    this.router.navigate(['/View Requests']);
   }
 
 

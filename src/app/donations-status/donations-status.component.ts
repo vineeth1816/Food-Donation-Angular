@@ -17,14 +17,27 @@ export class DonationsStatusComponent implements OnInit {
   message:string;
   request:any;
   element:HTMLElement;
+  userId:String;
+  detailsFlag:boolean=true;
+  
        @ViewChild('myTd') myTd:ElementRef;  
       ngOnInit(): void {
  if(localStorage.getItem('userId')==null){
       this.router.navigate(['/login']);
       
     }
+    this.userId=localStorage.getItem('userId').substr(1, localStorage.getItem('userId').length - 2);
+    if(this.userId=="admin"){
+      this.detailsFlag=false;
     this.donationService.getAllRequests()
     .subscribe(result=>this.requests=result,error=>alert("Server error"));
+    }
+    else
+    {
+      this.detailsFlag=true;
+      this.donationService.getRequestById(this.userId)
+      .subscribe(result=>this.requests=result,error=>alert("Server error"));
+    }
   }
   viewStatus(id:number){
     if(this.element==undefined){
