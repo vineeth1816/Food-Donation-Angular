@@ -15,7 +15,7 @@ import { User } from '../User';
 export class NavBarComponent implements OnInit {
 
   constructor(private eventEmitterService: EventEmitterService, public router: Router, public loginService: LoginserviceService) { }
-
+  blogsFlag:boolean=true;
   flag: boolean = true;
   featureFlag: boolean = false;
   user = new User();
@@ -70,8 +70,10 @@ export class NavBarComponent implements OnInit {
           this.requestOption = "Sponsor Logistics";
           this.requestStatus = "Sponser Status";
         }
-        else {
-          console.log("all failed");
+        else if(this.userCategory=="Admin"){
+          this.requestOption="Dashboard";
+          this.featureFlag=true;
+          this.blogsFlag=false;
         }
       },
         error => this.message = "lollll");

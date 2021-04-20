@@ -19,9 +19,14 @@ export class AdminDashboardComponent implements OnInit {
     // console.log(child)
     
     if(localStorage.getItem('userId')==null){
-
       this.router.navigate(['/login']);
     }
+  }
+  viewBlogs(){
+    this.router.navigate(['/adminBlogs'])
+  }
+  viewDonationRequests(){
+    
   }
 
 
