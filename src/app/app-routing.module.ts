@@ -28,7 +28,8 @@ const routes: Routes = [
   {path:'Donate Food',component:DonateFoodComponent},
   {path:'View Requests',component:DonationsStatusComponent},
   {path:'Dashboard',component:AdminDashboardComponent},
-  {path:'NGO PoC',component:FoodRequestComponent}
+  {path:'Request Food',component:FoodRequestComponent},
+  
   
 
 ];

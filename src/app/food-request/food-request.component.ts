@@ -24,12 +24,16 @@ req=new FoodRequest();
     
   }
   validate(myForm:NgForm){
+    
+  
+    console.log(this.req.occation)
+    this.req.userId = localStorage.getItem('userId').substr(1, localStorage.getItem('userId').length - 2);
     console.log(this.req)
-    this.foodRequestService.insertDonationRequest(this.req)
+    this.foodRequestService.insertFoodRequest(this.req)
     .subscribe(result=>{
       console.log(result);
       alert('Request Sent Successfully');
-      this.router.navigate(['/View Request'])
+      this.router.navigate(['admin'])
     },error=>console.log("Request not sent due to server error"))
 
   }

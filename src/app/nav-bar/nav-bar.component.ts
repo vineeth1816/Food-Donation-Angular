@@ -76,6 +76,7 @@ export class NavBarComponent implements OnInit {
           // this.requestOption="Dashboard";
           this.featureFlag=true;
           this.blogsFlag=false;
+          
         }
       },
         error => this.message = "lollll");
@@ -101,6 +102,7 @@ export class NavBarComponent implements OnInit {
     
     this.loginFlag=false;
     this.router.navigate(['/login']);
+    this.registerFlag=true;
   }
   
   home(){
@@ -116,6 +118,7 @@ export class NavBarComponent implements OnInit {
     
     this.registerFlag=false;
     this.router.navigate(['/register']);
+    this.loginFlag=true;
   }
 
 
