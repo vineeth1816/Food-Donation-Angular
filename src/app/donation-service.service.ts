@@ -19,4 +19,12 @@ export class DonationServiceService {
       userId:userID
     },{responseType:"json"});
   }
+
+  changeStatus(donationID:String,Status:String):Observable<Object>{
+    return this.httpClient.post<Object>('http://localhost:8080/changeStatus',{
+      donationId:donationID,status:Status
+    },{responseType:"json"});
+  }
+
+  
 }

@@ -1,5 +1,5 @@
-<p>donations</p>
-<div class="container panel panel-default">
+
+<div class="container panel panel-default mt-5">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded justify-content-between">
         <p class="navbar-brand">Donations Status</p>
 
@@ -31,7 +31,7 @@
                         <td *ngIf="detailsFlag" class="text-danger" id="{{request.donationId}}"></td>
                     </tr>
                     <tr *ngFor="let request of requests;let i=index">
-                        <td>
+                        <td *ngIf="!detailsFlag">
                             <p>
                                 <button type="button" class="btn btn-outline-primary"
                                     (click)="isCollapsed[i] = !isCollapsed[i]" [attr.aria-expanded]=true
@@ -39,7 +39,7 @@
                                     {{request.donationId}}
                                 </button>
                             </p>
-                            <div id="{{i}}" [ngbCollapse]="isCollapsed[i]">
+                            <div id="{{i}}" [ngbCollapse]="!isCollapsed[i]">
                                 <div class="card">
                                     <div class="card-body">
                                         <label class="font-weight-bold">Name:</label> {{request.name}}  {{i}}<br>
@@ -48,8 +48,8 @@
                                         <label class="font-weight-bold">Purpose:</label>{{request.purpose}}<br>
                                         <label class="font-weight-bold">No of
                                             packets:</label>{{request.noOfPackets}}<br>
-                                            <button *ngFlag="statusFlag" (click)="Approve(request.donationId)" class="btn btn-success">Approve</button>&nbsp;&nbsp;&nbsp;
-                                            <button *ngFlag="statusFlag" class="btn btn-danger">Reject</button>
+                                            <button *ngIf="isStatus[i]" (click)="changeStatus(request.donationId,'Approved',i)" class="btn btn-success">Approve</button>&nbsp;&nbsp;&nbsp;
+                                            <button *ngIf="isStatus[i]" (click)="changeStatus(request.donationId,'Rejected',i)"class="btn btn-danger">Reject</button>
                                     </div>
                                 </div>
                             </div>
