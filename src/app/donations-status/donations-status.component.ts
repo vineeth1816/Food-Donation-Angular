@@ -20,7 +20,7 @@ export class DonationsStatusComponent implements OnInit {
   userId:String;
   detailsFlag:boolean=true;
   statusFlag:boolean=true;
-  public isCollapsed: boolean[] = [true,true,true,true,true,true];
+  public isCollapsed: boolean[] = [true,true,true,true,true,true,true,true,true,true];
        @ViewChild('myTd') myTd:ElementRef;  
       ngOnInit(): void {
  if(localStorage.getItem('userId')==null){

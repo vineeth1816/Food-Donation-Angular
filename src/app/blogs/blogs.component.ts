@@ -25,6 +25,9 @@ export class BlogsComponent implements OnInit  {
   viewFlag=false;
   message:string="Blogs";
   ngOnInit(): void {
+     if(localStorage.getItem('userId')==null){
+      this.router.navigate(['/']);
+    }
     this.HomeFlag=true;
     this.updateDivFlag=false;
     this.updateFlag=false;

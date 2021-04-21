@@ -28,7 +28,7 @@ req=new FoodDonationRequest();
     .subscribe(result=>{
       console.log(result);
       alert('Request Sent Successfully');
-      this.router.navigate(['/View Request'])
+      this.router.navigate(['/View Requests'])
     },error=>console.log("Request not sent due to server error"))
 
   }
