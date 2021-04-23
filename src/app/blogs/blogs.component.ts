@@ -36,7 +36,8 @@ export class BlogsComponent implements OnInit  {
     this.blogUtility.getBlogs()
     .subscribe(result=>{
       this.blogs=result;
-    console.log(this.blogs[0]);},error=>console.log("Server error"));
+    // console.log(this.blogs[0]);
+  },error=>console.log("Server error"));
   }
 
   insert(myForm:NgForm){

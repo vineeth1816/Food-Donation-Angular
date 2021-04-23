@@ -21,4 +21,14 @@ export class FoodRequestServiceService {
     date:foodRequest.date,
     status:foodRequest.status
 },{responseType:"json"});
-  }}
+  }
+
+  getAllFoodRequests():Observable<Object>{
+    return this.httpClient.get<Object>('http://localhost:8080/getAllFoodRequests',{responseType:"json"});
+  }
+
+
+
+
+
+}

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { RegisterServiceService } from '../register-service.service';
 import { User } from '../User';
 
@@ -12,7 +13,7 @@ import { User } from '../User';
 export class RegisterFormComponent implements OnInit {
 
   u = new User();
-  constructor(public registerServcie:RegisterServiceService) { }
+  constructor(public registerServcie:RegisterServiceService,public route:Router) { }
 
   ngOnInit(): void {
   }
@@ -26,7 +27,8 @@ export class RegisterFormComponent implements OnInit {
     // alert("New user created Successfully");
     
     this.registerServcie.registerUser(this.u)
-    .subscribe(result=>alert("New User Created Successfully."),
+    .subscribe(result=>{alert("New User Created Successfully.");
+  this.route.navigate(['/login']);},
     error=>alert("Username already exists. Please choose other username"));
     }
   }

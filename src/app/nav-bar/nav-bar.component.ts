@@ -36,6 +36,7 @@ export class NavBarComponent implements OnInit {
   userCategory: String;
   requestOption: String;
   requestStatus: String;
+  adminRequests:String;
   userId:String;
   buttonDisable() {
     this.flag = false;
@@ -46,30 +47,33 @@ export class NavBarComponent implements OnInit {
     this.user.userId = localStorage.getItem('userId').substr(1, localStorage.getItem('userId').length - 2);
    this.userId=this.user.userId;
 
-    console.log(this.user);
+    // console.log(this.user);
 
     this.loginService.getUser(this.user)
       .subscribe(result => {
         this.message = "Welcome, " + result.firstName + " " + result.lastName;
         this.userCategory = result.userCategory;
-        console.log(this.userCategory);
-        console.log(result);
-        console.log(this.featureFlag);
+        // console.log(this.userCategory);
+        // console.log(result);
+        // console.log(this.featureFlag);
         if (this.userCategory == "Food Donor") {
-          console.log("inside Food Donor")
+          // console.log("inside Food Donor")
           this.featureFlag = true;
           this.requestOption = "Donate Food";
           this.requestStatus = "View Requests";
+          this.adminRequests="Admin Requests"
         }
         else if (this.userCategory == "NGO PoC") {
           this.featureFlag = true;
           this.requestOption = "Request Food";
           this.requestStatus = "Request Status";
+          this.adminRequests="Admin Requests"
         } else if (this.userCategory == "Logistics Sponser") {
           console.log("inside logistics");
           this.featureFlag = true;
           this.requestOption = "Sponsor Logistics";
           this.requestStatus = "Sponser Status";
+          this.adminRequests="Admin Requests"
         }
         else if(this.userCategory=="Admin"){
           this.requestOption="Dashboard";
@@ -87,6 +91,7 @@ export class NavBarComponent implements OnInit {
     
     this.requestOption=null;
     this.requestStatus=null;
+    this.adminRequests=null;
     this.featureFlag = false;
     this.registerFlag=true;
     localStorage.removeItem('userId');

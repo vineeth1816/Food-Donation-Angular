@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { AdminRequestsComponent } from './admin-requests/admin-requests.component';
 import { BlogsComponent } from './blogs/blogs.component';
 import { DonateFoodComponent } from './donate-food/donate-food.component';
 import { DonationsStatusComponent } from './donations-status/donations-status.component';
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path:'View Requests',component:DonationsStatusComponent},
   {path:'Dashboard',component:AdminDashboardComponent},
   {path:'Request Food',component:FoodRequestComponent},
+  {path:'Admin Requests',component:AdminRequestsComponent}
   
   
 

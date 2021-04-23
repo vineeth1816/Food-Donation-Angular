@@ -34,17 +34,17 @@ export class LoginFormComponent implements OnInit {
     // alert("New user created Successfully");
 
 
-    console.log(this.u);
+    // console.log(this.u);
     this.loginService.loginUser(this.u)
       .subscribe(result => {
-        console.log(result)
+        // console.log(result)
 
 
         if (result.password && result.userId) {
 
           this.successFlag = false;
           localStorage.setItem('userId', JSON.stringify(result.userId));
-          console.log(this.userId);
+          // console.log(this.userId);
           if (result.userId === "admin") {
             this.navbarFunction();
             this.router.navigate(['admin']);
