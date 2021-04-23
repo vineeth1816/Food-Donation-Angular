@@ -7,7 +7,7 @@ public  location:string;
 public  contactNo:string;
 public  occation:string;
 public  status:string;
-public noOfPacketsnumber;
+public noOfPackets:number;
 public date:Date;
 
 }

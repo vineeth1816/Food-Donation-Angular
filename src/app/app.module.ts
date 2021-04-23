@@ -23,6 +23,7 @@ import { FoodRequestComponent } from './food-request/food-request.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AdminRequestsComponent } from './admin-requests/admin-requests.component';
 import { ViewFoodRequestsComponent } from './view-food-requests/view-food-requests.component';
+import { MappedRequestsComponent } from './mapped-requests/mapped-requests.component';
 
 
 
@@ -44,6 +45,7 @@ import { ViewFoodRequestsComponent } from './view-food-requests/view-food-reques
     FoodRequestComponent,
     AdminRequestsComponent,
     ViewFoodRequestsComponent,
+    MappedRequestsComponent,
     
   ],
   imports: [

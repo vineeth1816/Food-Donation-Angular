@@ -62,6 +62,7 @@ export class NavBarComponent implements OnInit {
           this.requestOption = "Donate Food";
           this.requestStatus = "View Requests";
           this.adminRequests="Admin Requests"
+          localStorage.setItem("userCategory",this.userCategory.toString());
         }
         else if (this.userCategory == "NGO PoC") {
           this.featureFlag = true;
@@ -95,6 +96,7 @@ export class NavBarComponent implements OnInit {
     this.featureFlag = false;
     this.registerFlag=true;
     localStorage.removeItem('userId');
+    localStorage.removeItem('userCategory');
     this.userId=null;
     this.logoutFlag = false;
     this.flag = true;

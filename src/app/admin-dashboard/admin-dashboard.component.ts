@@ -26,7 +26,7 @@ pendingCount:number=0;
       this.size=response.length;
       
       for (let i = 0; i < this.size; i++) {
-        if(!(response[i].status=="Approved" || response[i].status=="Rejected")){
+        if(response[i].status=="Pending for Approval"){
           this.pendingCount=this.pendingCount+1;
         }
       }
@@ -47,6 +47,10 @@ pendingCount:number=0;
   raiseFoodRequest(){
     this.router.navigate(['Request Food']);
     this.router.navigate(['/View Requests']);
+  }
+  viewFoodRequests(){
+    
+    this.router.navigate(['Food requests']);
   }
 
 

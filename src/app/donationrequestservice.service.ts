@@ -16,7 +16,7 @@ export class DonationrequestserviceService {
     location:foodDonationRequest.location,
     contactNo:foodDonationRequest.contactNo,
     purpose:foodDonationRequest.purpose,
-    noOfPackets:foodDonationRequest.noOfPacketsnumber
+    noOfPackets:foodDonationRequest.noOfPackets
     
 },{responseType:"json"});
   }

@@ -108,8 +108,6 @@ export class DonationsStatusComponent implements OnInit {
       }, error => alert("server error"));
       
   }
- setStatusArray(){
-  
- }
+ 
 
 }

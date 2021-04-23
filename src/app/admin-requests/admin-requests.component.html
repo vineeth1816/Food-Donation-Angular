@@ -1,1 +1,27 @@
-<p>admin-requests works!</p>
+<div class="container panel panel-default mt-5">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded justify-content-between">
+    <p class="navbar-brand">Available Donors</p>
+
+</nav>
+<div class="table">
+    <tr>
+        <th>Date</th>
+        <th>Location</th>                        
+        <th >No of servings</th>
+        <th>Occation</th>
+        <th></th>
+        
+    </tr>
+    <tr *ngFor="let request of requests">      
+        <td >{{request.Date}}</td>
+        <td >{{request.location}}</td>
+        <td>{{request.noOfPackets}}</td>
+        <td>{{request.occation}}</td>
+        <td>
+            <button class="btn btn-primary">Volunteer this Request</button>
+        </td>
+        
+    </tr>
+</div>
+</div>
