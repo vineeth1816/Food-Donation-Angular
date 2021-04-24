@@ -1,0 +1,45 @@
+<p>add-vehicle works!</p>
+
+<div   class="container h-100 col-sm-6 mt-4" style="border: solid grey 1px;border-radius: 10px;border-width: 5px;">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-10 col-md-8 col-lg-6">
+            <!-- Form -->
+            <form class="form-example" #addVehicleForm="ngForm" (ngSubmit)="check()">
+                <h1 class="text-center mr-1">Logistics</h1>
+                
+                <!---<img class="ml-5" style="width: 10rem;" src=" ">-->
+                <!-- Input fields -->
+                <div class="form-group">
+                    <label for="Vehicleno">Vehicle No:</label>
+                    <input type="text" class="form-control Vehicleno"  placeholder="Enter Vehicle Number.." [(ngModel)]="v.vehicleNo" name="Vehicleno" ngModel #vehicleno="ngModel" required>
+                    <div *ngIf="vehicleno.invalid && vehicleno.touched" class="text-danger">
+                        <div *ngIf="vehicleno.errors.required">Vehicleno is required</div>
+                    </div>
+                    
+                </div>
+                <div class="form-group">
+                    <label for="DriverName">Driver Name:</label>
+                    <input type="text" class="form-control DriverName"  placeholder="Enter DriverName.." [(ngModel)]="v.driverName" name="DriverName" ngModel #drivername="ngModel" required>
+                    <div *ngIf="drivername.invalid && drivername.touched" class="text-danger">
+                        <div *ngIf="drivername.errors.required">DriverName is required</div>
+                    </div>
+                    
+                </div>
+                <div class="form-group">
+                    <label for="Location">Location :</label>
+                    <input type="text" class="form-control Location"  placeholder="Enter Location.." [(ngModel)]="v.location" name="Location" ngModel #location="ngModel" required>
+                    <div *ngIf="location.invalid && location.touched" class="text-danger">
+                        <div *ngIf="location.errors.required">Location is required</div>
+                    </div>
+                    
+                </div>
+
+    
+               
+                <button type="submit" [disabled]="addVehicleForm.form.invalid" class="btn btn-primary btn-customized mb-2">Add Vehicle</button>
+                
+            </form>
+            <!-- Form end -->
+        </div>
+    </div>
+</div>

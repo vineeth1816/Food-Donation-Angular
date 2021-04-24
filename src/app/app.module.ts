@@ -24,6 +24,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AdminRequestsComponent } from './admin-requests/admin-requests.component';
 import { ViewFoodRequestsComponent } from './view-food-requests/view-food-requests.component';
 import { MappedRequestsComponent } from './mapped-requests/mapped-requests.component';
+import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
+
 
 
 
@@ -46,6 +48,8 @@ import { MappedRequestsComponent } from './mapped-requests/mapped-requests.compo
     AdminRequestsComponent,
     ViewFoodRequestsComponent,
     MappedRequestsComponent,
+    AddVehicleComponent
+  
     
   ],
   imports: [
