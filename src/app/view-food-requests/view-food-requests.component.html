@@ -1,166 +1,177 @@
 <div *ngIf="!requestFormFlag">
     <div *ngIf="hideRequestsFlag" class="container panel panel-default mt-5">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded justify-content-between">
-        <p class="navbar-brand">Food Requests Status</p>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded justify-content-between">
+            <p class="navbar-brand">Food Requests Status</p>
 
-    </nav>
-    <div class="container border border-dark rounded col-sm-12">
-        <div>
+        </nav>
+        <div class="container border border-dark rounded col-sm-12">
             <div>
+                <div>
 
 
 
-                <div class="table">
-                    <tr>
-                        <th>Food Request ID</th>
-                        <th *ngIf="detailsFlag">Name</th>
-                        <th *ngIf="detailsFlag">Location</th>
-                        <th *ngIf="detailsFlag">Contact no</th>
-                        <th *ngIf="detailsFlag">Purpose</th>
-                        <th *ngIf="detailsFlag">No of servings</th>
-                        <th *ngIf="detailsFlag">Status</th>
-                    </tr>
-                    <tr *ngFor="let request of requests">
-                        <td *ngIf="detailsFlag"><button class="btn btn-primary"
-                                (click)="viewStatus(request.requestId)">{{request.requestId}}</button></td>
-                        <td *ngIf="detailsFlag">{{request.name}}</td>
-                        <td *ngIf="detailsFlag">{{request.location}}</td>
-                        <td *ngIf="detailsFlag">{{request.contactNo}}</td>
-                        <td *ngIf="detailsFlag">{{request.occation}}</td>
-                        <td *ngIf="detailsFlag">{{request.noOfPackets}}</td>
-                        <!-- <td *ngIf="detailsFlag">{{request.date}}</td> -->
-                        <td *ngIf="detailsFlag" class="font-weight-bold" id="{{request.requestId}}"></td>
-                    </tr>
-                    <tr *ngFor="let request of requests;let i=index">
-                        <td *ngIf="!detailsFlag">
-                            <p>
-                                <button type="button" class="btn btn-outline-primary"
-                                    (click)="isCollapsed[i] = !isCollapsed[i]" [attr.aria-expanded]=true
-                                    aria-controls="{{i}}">
-                                    {{request.requestId}}
-                                </button>
-                            </p>
-                            <div id="{{i}}" [ngbCollapse]="!isCollapsed[i]">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <label class="font-weight-bold">Date of Request:</label> {{request.date}}<br>
-                                        <label class="font-weight-bold">Name:</label> {{request.name}}<br>
-                                        <label class="font-weight-bold">Location:</label> {{request.location}}<br>
-                                        <label class="font-weight-bold">Contact no:</label> {{request.contactNo}}<br>
-                                        <label class="font-weight-bold">Occation:</label> {{request.occation}}<br>
-                                        <label class="font-weight-bold">Status:</label> {{request.status}}<br>
-                                        <label class="font-weight-bold">No of
-                                            packets:</label>{{request.noOfPackets}}<br>
-                                        <button *ngIf="isStatus[i]" (click)="changeStatus(request.requestId,'Approved')"
-                                            class="btn btn-success">Approve</button>&nbsp;&nbsp;&nbsp;
-                                        <button *ngIf="isStatus[i]" (click)="changeStatus(request.requestId,'Rejected')"
-                                            class="btn btn-danger">Reject</button>
-                                        <button *ngIf="assignDonorFlag[i]" (click)="viewDonors(request)"
-                                            class="btn btn-primary">Assign Donor</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-
-                    </tr>
-                </div>
-
-            </div>
-        </div>
-
-    </div>
-
-</div>
-
-<div *ngIf="!hideRequestsFlag" class="container panel panel-default mt-5">
-    <button  (click)="viewAllRequests()" class="btn btn-primary">View All Requests</button>
-    <div class="card">
-        <div class="card-body">
-            <label class="font-weight-bold">Date of Request:</label> {{requestToBeAssignedWithDonor.date}}<br>
-            <label class="font-weight-bold">Name:</label> {{requestToBeAssignedWithDonor.name}}<br>
-            <label class="font-weight-bold">Location:</label> {{requestToBeAssignedWithDonor.location}}<br>
-            <label class="font-weight-bold">Contact no:</label> {{requestToBeAssignedWithDonor.contactNo}}<br>
-            <label class="font-weight-bold">Occation:</label> {{requestToBeAssignedWithDonor.occation}}<br>
-            <label class="font-weight-bold">Status:</label> {{requestToBeAssignedWithDonor.status}}<br>
-            <label class="font-weight-bold">No of
-                packets:</label>{{requestToBeAssignedWithDonor.noOfPackets}}<br>
-        </div>
-        
-    </div>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded justify-content-between">
-        <p class="navbar-brand">Available Donors</p>
-
-    </nav>
-
-
-    <div class="container border border-dark rounded col-sm-12">
-        <div *ngIf="!noDonorsFlag">
-            <div>
-
-
-
-                <div class="table">
-                    <tr>
-                        <th>Name</th>
-                        <th>Location</th>                        
-                        <th >No of servings</th>
-                        <th></th>
-                        
-                    </tr>
-                    <tr *ngFor="let donor of donors">
-                        
+                    <div class="table">
+                        <tr>
+                            <th>Food Request ID</th>
+                            <th *ngIf="detailsFlag">Name</th>
+                            <th *ngIf="detailsFlag">Location</th>
+                            <th *ngIf="detailsFlag">Contact no</th>
+                            <th *ngIf="detailsFlag">Purpose</th>
+                            <th *ngIf="detailsFlag">No of servings</th>
+                            <th *ngIf="detailsFlag">Status</th>
+                        </tr>
+                        <tr *ngFor="let request of requests">
+                            <td *ngIf="detailsFlag"><button class="btn btn-primary"
+                                    (click)="viewStatus(request.requestId)">{{request.requestId}}</button></td>
+                            <td *ngIf="detailsFlag">{{request.name}}</td>
+                            <td *ngIf="detailsFlag">{{request.location}}</td>
+                            <td *ngIf="detailsFlag">{{request.contactNo}}</td>
+                            <td *ngIf="detailsFlag">{{request.occation}}</td>
+                            <td *ngIf="detailsFlag">{{request.noOfPackets}}</td>
+                            <!-- <td *ngIf="detailsFlag">{{request.date}}</td> -->
+                            <td *ngIf="detailsFlag" class="font-weight-bold" id="{{request.requestId}}"></td>
+                        </tr>
+                        <tr *ngFor="let request of requests;let i=index">
+                            <td *ngIf="!detailsFlag">
                                 
-                        <td >{{donor.name}}</td>
-                        <td >{{donor.location}}</td>
-                        
-                        
-                        <td>{{donor.noOfPackets}}</td>
-                        <td>
-                            <button  (click)="mapDonor(requestToBeAssignedWithDonor,donor)"
-                                            class="btn btn-primary">Assign this Donor</button>
-                        </td>
-                        
-                    </tr>
+                                    <p>
+                                        <button type="button" class="btn btn-outline-primary"
+                                            (click)="isCollapsed[i] = !isCollapsed[i]" [attr.aria-expanded]=true
+                                            aria-controls="{{i}}">
+                                            {{request.requestId}}
+                                        </button>
+                                    </p>
+                                    <div id="{{i}}" [ngbCollapse]="!isCollapsed[i]">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <label class="font-weight-bold">Date of Request:</label>
+                                                {{request.date}}<br>
+                                                <label class="font-weight-bold">Name:</label> {{request.name}}<br>
+                                                <label class="font-weight-bold">Location:</label>
+                                                {{request.location}}<br>
+                                                <label class="font-weight-bold">Contact no:</label>
+                                                {{request.contactNo}}<br>
+                                                <label class="font-weight-bold">Occation:</label>
+                                                {{request.occation}}<br>
+                                                <label class="font-weight-bold">Status:</label> {{request.status}}<br>
+                                                <label class="font-weight-bold">No of
+                                                    packets:</label>{{request.noOfPackets}}<br>
+                                                <button *ngIf="isStatus[i]"
+                                                    (click)="changeStatus(request.requestId,'Approved')"
+                                                    class="btn btn-success">Approve</button>&nbsp;&nbsp;&nbsp;
+                                                <button *ngIf="isStatus[i]"
+                                                    (click)="changeStatus(request.requestId,'Rejected')"
+                                                    class="btn btn-danger">Reject</button>
+                                                <button *ngIf="assignDonorFlag[i]" (click)="viewDonors(request)"
+                                                    class="btn btn-primary">Assign Donor</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                            </td>
+
+                        </tr>
+                    </div>
+
                 </div>
             </div>
-        </div>
 
-        <div *ngIf="noDonorsFlag">
-            No donors Available. Click <i><u (click)="viewRequestForm()" style="color:blue;">here</u></i> to raise a request.
         </div>
 
     </div>
-</div>
+
+    <div *ngIf="!hideRequestsFlag" class="container panel panel-default mt-5">
+        <button (click)="viewAllRequests()" class="btn btn-primary">View All Requests</button>
+        <div class="card">
+            <div class="card-body">
+                <label class="font-weight-bold">Date of Request:</label> {{requestToBeAssignedWithDonor.date}}<br>
+                <label class="font-weight-bold">Name:</label> {{requestToBeAssignedWithDonor.name}}<br>
+                <label class="font-weight-bold">Location:</label> {{requestToBeAssignedWithDonor.location}}<br>
+                <label class="font-weight-bold">Contact no:</label> {{requestToBeAssignedWithDonor.contactNo}}<br>
+                <label class="font-weight-bold">Occation:</label> {{requestToBeAssignedWithDonor.occation}}<br>
+                <label class="font-weight-bold">Status:</label> {{requestToBeAssignedWithDonor.status}}<br>
+                <label class="font-weight-bold">No of
+                    packets:</label>{{requestToBeAssignedWithDonor.noOfPackets}}<br>
+            </div>
+
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded justify-content-between">
+            <p class="navbar-brand">Available Donors</p>
+
+        </nav>
+
+
+        <div class="container border border-dark rounded col-sm-12">
+            <div *ngIf="!noDonorsFlag">
+                <div>
+
+
+
+                    <div class="table">
+                        <tr>
+                            <th>Name</th>
+                            <th>Location</th>
+                            <th>No of servings</th>
+                            <th></th>
+
+                        </tr>
+                        <tr *ngFor="let donor of donors">
+
+
+                            <td>{{donor.name}}</td>
+                            <td>{{donor.location}}</td>
+
+
+                            <td>{{donor.noOfPackets}}</td>
+                            <td>
+                                <button (click)="mapDonor(requestToBeAssignedWithDonor,donor)"
+                                    class="btn btn-primary">Assign this Donor</button>
+                            </td>
+
+                        </tr>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="noDonorsFlag">
+                No donors Available. Click <i><u (click)="viewRequestForm()" style="color:blue;">here</u></i> to raise a
+                request.
+            </div>
+
+        </div>
+    </div>
 </div>
 <div *ngIf="requestFormFlag" class="container justify-content-center">
     <h1>Raise a Food Request</h1>
     <form class="form-horizontal" #foodForm="ngForm" (ngSubmit)="raiseRequest(foodForm)">
         <fieldset [disabled]="noDonorsFlag">
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="purpose">Enter Location</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" #location="ngModel"  placeholder="Enter Location" ngModel [(ngModel)]="requestToBeAssignedWithDonor.location" name="location" required>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="purpose">Enter Location</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" #location="ngModel" placeholder="Enter Location" ngModel
+                        [(ngModel)]="requestToBeAssignedWithDonor.location" name="location" required>
+                </div>
+                <div *ngIf="location.touched && contactno.invalid" class="text-danger ml-4">
+                    <div *ngIf="location.errors.required">Location is required</div>
+                </div>
             </div>
-            <div *ngIf="location.touched && contactno.invalid" class="text-danger ml-4">
-                <div *ngIf="location.errors.required">Location is required</div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="quantity">Enter no. of servings</label>
+                <div class="col-sm-10">
+                    <input type="number" #quantity="ngModel" class="form-control" placeholder="Enter number of servings"
+                        ngModel [(ngModel)]="requestToBeAssignedWithDonor.noOfPackets" name="quantity" required>
+                </div>
+                <div *ngIf="quantity.touched && quantity.invalid" class="text-danger ml-4">
+                    <div *ngIf="quantity.errors.required">quantity is required</div>
+                </div>
             </div>
-        </div>
-       
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="quantity">Enter no. of servings</label>
-            <div class="col-sm-10">
-                <input type="number" #quantity="ngModel" class="form-control" placeholder="Enter number of servings" ngModel [(ngModel)]="requestToBeAssignedWithDonor.noOfPackets" name="quantity" required>
-            </div>
-            <div *ngIf="quantity.touched && quantity.invalid" class="text-danger ml-4">
-                <div *ngIf="quantity.errors.required">quantity is required</div>
-            </div>
-        </div>
-    </fieldset>
+        </fieldset>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </div>
-        
+
     </form>
 </div>

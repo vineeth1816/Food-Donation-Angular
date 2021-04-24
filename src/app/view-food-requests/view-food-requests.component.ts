@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AdminRequestsService } from '../admin-requests.service';
 import { DonationServiceService } from '../donation-service.service';
 import { FoodRequestServiceService } from '../food-request-service.service';
 import { FoodDonationRequest } from '../FoodDonationRequest';
@@ -14,7 +15,7 @@ import { MappingService } from '../mapping.service';
 })
 export class ViewFoodRequestsComponent implements OnInit {
 
-  constructor(public foodRequestService:FoodRequestServiceService, public router: Router,public mapUtility:MappingService,public requestStatusUtility:FoodRequestServiceService,public donorStatusUtility:DonationServiceService) { }
+  constructor(public foodRequestService:FoodRequestServiceService, public router: Router,public mapUtility:MappingService,public requestStatusUtility:FoodRequestServiceService,public donorStatusUtility:DonationServiceService,public adminRequestUtility:AdminRequestsService) { }
 
   requests: any;
   donors:any;
@@ -24,6 +25,7 @@ export class ViewFoodRequestsComponent implements OnInit {
   request: any;
   element: HTMLElement;
   userId: String;
+  category:String;
   detailsFlag: boolean = true;
   noDonorsFlag:boolean=false;
   noOfDonors:number;
@@ -43,6 +45,7 @@ export class ViewFoodRequestsComponent implements OnInit {
 
     }
     this.userId = localStorage.getItem('userId').substr(1, localStorage.getItem('userId').length - 2);
+    
     if (this.userId == "admin") {
       this.viewFlag=true;
       this.isStatus=[true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true];
@@ -52,20 +55,26 @@ export class ViewFoodRequestsComponent implements OnInit {
 
       this.foodRequestService.getAllFoodRequests()
         .subscribe((response:any) =>{ this.requests = response;
-          
+          console.log(JSON.stringify(response));
+          console.log(response);
+          console.log(this.requests);
           this.size=response.length;
           
           for (let i = 0; i < this.size; i++) {
             if(response[i].status=="Approved" || response[i].status=="Rejected" || response[i].status=="Mapped"){
             this.isStatus[i]=false;
+            console.log(response[i].requestId);
             if(response[i].status=="Approved")
+            {
+              console.log(response[i].requestId);
             this.assignDonorFlag[i]=true;
+            }
 
             // if(response[i].status=="Assigned")
             // this.assignDonorFlag[i]=false;
 
-            if(response[i].status=="Mapped")
-              response.splice(i,1);
+            // if(response[i].status=="Mapped")
+            //   response.splice(i,1);
             
             }
 
@@ -152,6 +161,20 @@ export class ViewFoodRequestsComponent implements OnInit {
     );
   }
   mapDonor(requestToBeAssignedWithDonor:FoodRequest,donor:FoodDonationRequest){
+    
+    this.category="Food";
+
+    this.adminRequestUtility.checkRequest(requestToBeAssignedWithDonor.requestId,this.category)
+    .subscribe(result=>{
+      if(result)
+      {this.adminRequestUtility.deleteRequest(requestToBeAssignedWithDonor.requestId,this.category)
+      .subscribe(result=>{
+        console.log("true");
+      },error=>alert("Server Error.Please try after sometime"));
+      
+      }
+    },error=>alert("Server Error. Please try after sometime."));
+    
 
     this.mapUtility.mapRequestDonor(requestToBeAssignedWithDonor,donor)
     .subscribe(result=>{

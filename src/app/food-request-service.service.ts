@@ -23,8 +23,8 @@ export class FoodRequestServiceService {
 },{responseType:"json"});
   }
 
-  getAllFoodRequests():Observable<Object>{
-    return this.httpClient.get<Object>('http://localhost:8080/getAllFoodRequests',{responseType:"json"});
+  getAllFoodRequests():Observable<FoodRequest[]>{
+    return this.httpClient.get<FoodRequest[]>('http://localhost:8080/getAllFoodRequests',{responseType:"json"});
   }
 
 
