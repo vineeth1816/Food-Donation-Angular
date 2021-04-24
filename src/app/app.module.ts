@@ -18,9 +18,13 @@ import { PasswordResetComponent } from './password-reset/password-reset.componen
 import { BlogsComponent } from './blogs/blogs.component';
 import { DonateFoodComponent } from './donate-food/donate-food.component';
 import { DonationsStatusComponent } from './donations-status/donations-status.component';
-import { ViewDonationRequestsComponent } from './view-donation-requests/view-donation-requests.component';
+
 import { FoodRequestComponent } from './food-request/food-request.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AdminRequestsComponent } from './admin-requests/admin-requests.component';
+import { ViewFoodRequestsComponent } from './view-food-requests/view-food-requests.component';
+import { MappedRequestsComponent } from './mapped-requests/mapped-requests.component';
+
 
 
 @NgModule({
@@ -38,8 +42,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BlogsComponent,
     DonateFoodComponent,
     DonationsStatusComponent,
-    ViewDonationRequestsComponent,
-    FoodRequestComponent
+    FoodRequestComponent,
+    AdminRequestsComponent,
+    ViewFoodRequestsComponent,
+    MappedRequestsComponent,
+    
   ],
   imports: [
     BrowserModule,

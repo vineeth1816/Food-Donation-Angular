@@ -33,7 +33,7 @@ req=new FoodRequest();
     .subscribe(result=>{
       console.log(result);
       alert('Request Sent Successfully');
-      this.router.navigate(['admin'])
+      this.router.navigate(['blogs'])
     },error=>console.log("Request not sent due to server error"))
 
   }

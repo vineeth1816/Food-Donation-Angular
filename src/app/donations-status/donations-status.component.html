@@ -28,7 +28,7 @@
                         <td *ngIf="detailsFlag">{{request.contactNo}}</td>
                         <td *ngIf="detailsFlag">{{request.purpose}}</td>
                         <td *ngIf="detailsFlag">{{request.noOfPackets}}</td>
-                        <td *ngIf="detailsFlag" class="text-danger" id="{{request.donationId}}"></td>
+                        <td *ngIf="detailsFlag" class="font-weight-bold" id="{{request.donationId}}"></td>
                     </tr>
                     <tr *ngFor="let request of requests;let i=index">
                         <td *ngIf="!detailsFlag">
@@ -42,10 +42,11 @@
                             <div id="{{i}}" [ngbCollapse]="!isCollapsed[i]">
                                 <div class="card">
                                     <div class="card-body">
-                                        <label class="font-weight-bold">Name:</label> {{request.name}}  {{i}}<br>
+                                        <label class="font-weight-bold">Name:</label> {{request.name}}<br>
                                         <label class="font-weight-bold">Location:</label>{{request.location}}<br>
                                         <label class="font-weight-bold">Contact no:</label>{{request.contactNo}}<br>
                                         <label class="font-weight-bold">Purpose:</label>{{request.purpose}}<br>
+                                        <label class="font-weight-bold">Status:</label>{{request.status}}<br>
                                         <label class="font-weight-bold">No of
                                             packets:</label>{{request.noOfPackets}}<br>
                                             <button *ngIf="isStatus[i]" (click)="changeStatus(request.donationId,'Approved',i)" class="btn btn-success">Approve</button>&nbsp;&nbsp;&nbsp;

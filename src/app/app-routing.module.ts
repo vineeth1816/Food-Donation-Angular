@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { AdminRequestsComponent } from './admin-requests/admin-requests.component';
 import { BlogsComponent } from './blogs/blogs.component';
 import { DonateFoodComponent } from './donate-food/donate-food.component';
 import { DonationsStatusComponent } from './donations-status/donations-status.component';
@@ -9,9 +10,11 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ForgotUserIdComponent } from './forgot-user-id/forgot-user-id.component';
 import { HomeComponent } from './home/home.component';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { MappedRequestsComponent } from './mapped-requests/mapped-requests.component';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { ViewFoodRequestsComponent } from './view-food-requests/view-food-requests.component';
 
 const routes: Routes = [
   {path:'register',component:RegisterFormComponent},
@@ -29,7 +32,11 @@ const routes: Routes = [
   {path:'View Requests',component:DonationsStatusComponent},
   {path:'Dashboard',component:AdminDashboardComponent},
   {path:'Request Food',component:FoodRequestComponent},
-  
+  {path:'Admin Requests',component:AdminRequestsComponent},
+  {path:'Food requests',component:ViewFoodRequestsComponent},
+  {path:'mappedRequests',component:MappedRequestsComponent},
+  {path:'Request Status',component:ViewFoodRequestsComponent},
+  {path:'Food requests/Request Food',component:FoodRequestComponent}
   
 
 ];

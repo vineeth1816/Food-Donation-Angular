@@ -8,5 +8,5 @@ public  contactNo:string;
 public  purpose:string;
 public  status:string;
 public  userId:string;
-public noOfPacketsnumber;
+public noOfPackets:number;
 }

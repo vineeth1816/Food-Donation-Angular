@@ -19,11 +19,10 @@ export class UserDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     if(localStorage.getItem('userId')==null){
-      this.router.navigate(['/login']);
-      
+      this.router.navigate(['/login']); 
     }
     else{
-      console.log("logged in")
+      // console.log("logged in")
       this.populateBlogs();
     }
   }
@@ -37,7 +36,8 @@ export class UserDashboardComponent implements OnInit {
         this.blogUtility.getBlogs()
     .subscribe(result=>{
       this.blogs=result;
-    console.log(this.blogs[0]);},error=>console.log("Server error"));
+    // console.log(this.blogs[0]);
+  },error=>console.log("Server error"));
   }
 
   viewBlog(id:number){
