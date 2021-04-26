@@ -4,6 +4,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { AdminRequestsComponent } from './admin-requests/admin-requests.component';
 import { BlogsComponent } from './blogs/blogs.component';
 import { DonateFoodComponent } from './donate-food/donate-food.component';
+import { DonateLogisticsComponent } from './donate-logistics/donate-logistics.component';
 import { DonationsStatusComponent } from './donations-status/donations-status.component';
 import { FoodRequestComponent } from './food-request/food-request.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
@@ -15,6 +16,7 @@ import { PasswordResetComponent } from './password-reset/password-reset.componen
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { ViewFoodRequestsComponent } from './view-food-requests/view-food-requests.component';
+import { ViewLogisticDonationRequestsComponent } from './view-logistic-donation-requests/view-logistic-donation-requests.component';
 
 const routes: Routes = [
   {path:'register',component:RegisterFormComponent},
@@ -36,7 +38,9 @@ const routes: Routes = [
   {path:'Food requests',component:ViewFoodRequestsComponent},
   {path:'mappedRequests',component:MappedRequestsComponent},
   {path:'Request Status',component:ViewFoodRequestsComponent},
-  {path:'Food requests/Request Food',component:FoodRequestComponent}
+  {path:'Food requests/Request Food',component:FoodRequestComponent},
+  {path:'Donate Logistics',component:DonateLogisticsComponent},
+  {path:'Logistic Donation Status',component:ViewLogisticDonationRequestsComponent}
   
 
 ];

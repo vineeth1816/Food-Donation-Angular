@@ -72,8 +72,8 @@ export class NavBarComponent implements OnInit {
         } else if (this.userCategory == "Logistics Sponser") {
           console.log("inside logistics");
           this.featureFlag = true;
-          this.requestOption = "Sponsor Logistics";
-          this.requestStatus = "Sponser Status";
+          this.requestOption = "Donate Logistics";
+          this.requestStatus = "Logistic Donation Status";
           this.adminRequests="Admin Requests"
         }
         else if(this.userCategory=="Admin"){
