@@ -25,6 +25,8 @@ import { AdminRequestsComponent } from './admin-requests/admin-requests.componen
 import { ViewFoodRequestsComponent } from './view-food-requests/view-food-requests.component';
 import { MappedRequestsComponent } from './mapped-requests/mapped-requests.component';
 import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
+import { VolunteerFoodRequestFormComponent } from './volunteer-food-request-form/volunteer-food-request-form.component';
+
 
 
 
@@ -48,7 +50,9 @@ import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
     AdminRequestsComponent,
     ViewFoodRequestsComponent,
     MappedRequestsComponent,
-    AddVehicleComponent
+    AddVehicleComponent,
+    VolunteerFoodRequestFormComponent,
+    
   
     
   ],

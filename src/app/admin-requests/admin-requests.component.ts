@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AdminRequestsService } from '../admin-requests.service';
 import { DonationrequestserviceService } from '../donationrequestservice.service';
 import { FoodDonationRequest } from '../FoodDonationRequest';
 import { FoodRequest } from '../FoodRequest';
+import { LoginserviceService } from '../loginservice.service';
+import { User } from '../User';
 
 @Component({
   selector: 'app-admin-requests',
@@ -11,13 +14,14 @@ import { FoodRequest } from '../FoodRequest';
 })
 export class AdminRequestsComponent implements OnInit {
 
-  constructor(public adminRequestsUtility:AdminRequestsService,public donationRequestService:DonationrequestserviceService) { }
+  constructor(public router:Router,public userUtility:LoginserviceService,public adminRequestsUtility:AdminRequestsService,public donationRequestService:DonationrequestserviceService) { }
 
   requests:any;
   dateRequests:any;
   locationRequests:any;
   occationRequests:any;
   quantityRequests:any;
+  user:User;
   category:string;
   category1:string;
   sortBy:String;
@@ -91,10 +95,21 @@ export class AdminRequestsComponent implements OnInit {
 
   Volunteer(request:FoodRequest){
     this.userId = localStorage.getItem('userId').substr(1, localStorage.getItem('userId').length - 2);
-    this.Donor.name=request.name;
-    this.Donor.noOfPackets=request.noOfPackets;
-    this.Donor.status="Approved";
-    this.Donor.userId=this.userId.toString();
+    localStorage.setItem("volunteeredRequestId",request.requestId);
+    alert(request.name);
+    localStorage.setItem("volunteeredRequestName",request.name); 
+    localStorage.setItem("volunteeredRequestQuantity",request.noOfPackets.toString());
+    this.router.navigate(['volunteerRequestForm'], { replaceUrl: true });
+    // this.Donor.name=request.name;
+    // this.Donor.noOfPackets=request.noOfPackets;
+    // this.Donor.status="Approved";
+    // this.Donor.userId=this.userId.toString();
+    // this.user.userId=this.userId.toString();
+    // this.userUtility.getUser(this.user)
+    // .subscribe(result=>{
+    //   this.Donor.contactNo=this.user.contactNo.toString();
+    //   this.Donor.location=this.user.lo
+    // },error=>alert("Server Error.Please try after sometime."));
 
 
   }

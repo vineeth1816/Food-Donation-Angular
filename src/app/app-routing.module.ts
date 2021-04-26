@@ -15,6 +15,7 @@ import { PasswordResetComponent } from './password-reset/password-reset.componen
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { ViewFoodRequestsComponent } from './view-food-requests/view-food-requests.component';
+import { VolunteerFoodRequestFormComponent } from './volunteer-food-request-form/volunteer-food-request-form.component';
 
 const routes: Routes = [
   {path:'register',component:RegisterFormComponent},
@@ -36,7 +37,8 @@ const routes: Routes = [
   {path:'Food requests',component:ViewFoodRequestsComponent},
   {path:'mappedRequests',component:MappedRequestsComponent},
   {path:'Request Status',component:ViewFoodRequestsComponent},
-  {path:'Food requests/Request Food',component:FoodRequestComponent}
+  {path:'Food requests/Request Food',component:FoodRequestComponent},
+  {path:'volunteerRequestForm',component:VolunteerFoodRequestFormComponent}
   
 
 ];
