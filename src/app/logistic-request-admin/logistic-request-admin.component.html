@@ -1,0 +1,43 @@
+<p>logistic-request-admin works!</p>
+<div class="container justify-content-center">
+    <h1>Raise New Logistic Request</h1>
+    <form class="form-horizontal" #logisticsForm="ngForm" (ngSubmit)="validate(logisticsForm)">
+        
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="contactNo">Contact no:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" #contactno="ngModel" placeholder="Enter Contact No"
+                    pattern="[0-9]{10}" ngModel [(ngModel)]="req.contactNo" name="contactNo" required>
+
+            </div>
+            <div *ngIf="contactno.touched && contactno.invalid" class="text-danger ml-4">
+                <div *ngIf="contactno.errors.required">Contact No is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="purpose">Enter Location</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" #location="ngModel" placeholder="Enter Location" ngModel
+                    [(ngModel)]="req.location" name="location" required>
+            </div>
+            <div *ngIf="location.touched && contactno.invalid" class="text-danger ml-4">
+                <div *ngIf="location.errors.required">Location is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="purpose">Purpose of Request</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" #purpose="ngModel" placeholder="Enter Purpose of Donation"
+                    ngModel [(ngModel)]="req.purpose" name="purpose" required>
+            </div>
+            <div *ngIf="purpose.touched && purpose.invalid" class="text-danger ml-4">
+                <div *ngIf="purpose.errors.required">purpose is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" [disabled]="logisticsForm.invalid" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>

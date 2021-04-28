@@ -24,4 +24,22 @@ export class LogisticRequestServiceService {
   getAllRequests():Observable<Object>{
     return this.httpClient.get<Object>('http://localhost:8080/getAllLogisticDonationRequests',{responseType:"json"});
   }
+  
+  getAllPendingDonorRequests():Observable<Object>{
+    return this.httpClient.get<Object>('http://localhost:8080/getAllPendingLogisticDonationRequests',{responseType:"json"});
+  }
+  
+  getRequestById(userID:String):Observable<Object>{
+    return this.httpClient.post<Object>('http://localhost:8080/getLogisticDonationRequestsById',{
+      userId:userID
+    },{responseType:"json"});
+  }
+
+  changeStatus(donationID:String,Status:String):Observable<Object>{
+    return this.httpClient.post<Object>('http://localhost:8080/changeStatusLogisticDonationRequest',{
+      donationId:donationID,status:Status
+    },{responseType:"json"});
+  }
+
+
 }

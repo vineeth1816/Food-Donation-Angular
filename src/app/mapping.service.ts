@@ -14,4 +14,9 @@ export class MappingService {
   mapRequestDonor(foodRequest:FoodRequest,foodDonationRequest:FoodDonationRequest):Observable<Object>{
     return this.httpClient.get<Object>('http://localhost:8080/mapRequestToDonor/'+foodRequest.requestId+'/'+foodDonationRequest.donationId,{responseType:"json"});
   }
+
+  getAllRequests():Observable<Object>{
+    return this.httpClient.get<Object>('http://localhost:8080/getAllMappedRequests',{responseType:"json"});
+  }
 }
+  

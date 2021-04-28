@@ -1,27 +1,202 @@
 <div class="container panel panel-default mt-5">
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded justify-content-between">
-    <p class="navbar-brand">Available Donors</p>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded justify-content-between">
+        <p class="navbar-brand">Admin Requests</p>
+    </nav>
+    <div class="container border border-dark rounded col-sm-12">
+    <div *ngIf="(!userFlag) || normalFlag" class="row">
+        <div class="col text-right mt-1">
+            <div ngbDropdown class="d-inline-block">
+                <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Sort by</button>
+                <div *ngIf="userFlag" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button ngbDropdownItem (click)="sort('date')">Date</button>
+                    <button ngbDropdownItem (click)="sort('location')">Location</button>
+                    <button ngbDropdownItem (click)="sort('quantity')">Quantity</button>
+                    <button ngbDropdownItem (click)="sort('occation')">Occation</button>
+                </div>
+                <div *ngIf="!userFlag" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    
+                    <button ngbDropdownItem (click)="sort('logisticLocation')">Location</button>
+                
+                    <button ngbDropdownItem (click)="sort('logisticPurpose')">Purpose</button>
+                </div>
+            </div>
+        </div>
 
-</nav>
-<div class="table">
-    <tr>
-        <th>Date</th>
-        <th>Location</th>                        
-        <th >No of servings</th>
-        <th>Occation</th>
-        <th></th>
+        <table *ngIf="userFlag" class="table table-striped">
+            <tr>
+                <th>Date</th>
+                <th>Location</th>
+                <th>No of servings</th>
+                <th>Occation</th>
+                <th></th>
+
+            </tr>
+            <tr *ngFor="let request of requests">
+                <td>{{request.date}}</td>
+                <td>{{request.location}}</td>
+                <td>{{request.noOfPackets}}</td>
+                <td>{{request.occation}}</td>
+                <td>
+                    <button class="btn btn-primary" (click)="Volunteer(request)">Volunteer this Request</button>
+                </td>
+
+            </tr>
+        </table>
+            <table *ngIf="!userFlag" class="table table-striped">
+                <tr>
+                    <th>Request id</th>
+                    <th>Location</th>
+                    <th>Contact No</th>
+                    <th>Purpose</th>
+                    <th></th>
         
-    </tr>
-    <tr *ngFor="let request of requests">      
-        <td >{{request.Date}}</td>
-        <td >{{request.location}}</td>
-        <td>{{request.noOfPackets}}</td>
-        <td>{{request.occation}}</td>
-        <td>
-            <button class="btn btn-primary">Volunteer this Request</button>
-        </td>
+                </tr>
+                <tr *ngFor="let request of requests">
+                    <td>{{request.requestId}}</td>
+                    <td>{{request.location}}</td>
+                    <td>{{request.contactNo}}</td>
+                    <td>{{request.purpose}}</td>
+                    <td>
+                        <button class="btn btn-primary" (click)="Volunteer(request)">Volunteer this Request</button>
+                    </td>
+                    
         
-    </tr>
+                </tr>
+            </table>
+        
+    </div>
+    <div *ngIf="dateFlag" class="row">
+        <div class="col text-right mt-1">
+            <div ngbDropdown class="d-inline-block">
+                <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Sort by</button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button ngbDropdownItem (click)="sort('date')">Date</button>
+                    <button ngbDropdownItem (click)="sort('location')">Location</button>
+                    <button ngbDropdownItem (click)="sort('quantity')">Quantity</button>
+                    <button ngbDropdownItem (click)="sort('occation')">Occation</button>
+                </div>
+            </div>
+        </div>
+        <table class="table">
+            <tr>
+                <th>Date</th>
+                <th>Location</th>
+                <th>No of servings</th>
+                <th>Occation</th>
+                <th></th>
+
+            </tr>
+            <tr *ngFor="let request of dateRequests">
+                <td>{{request.date}}</td>
+                <td>{{request.location}}</td>
+                <td>{{request.noOfPackets}}</td>
+                <td>{{request.occation}}</td>
+                <td>
+                    <button class="btn btn-primary" (click)="Volunteer(request)">Volunteer this Request</button>
+                </td>
+
+            </tr>
+        </table>
+    </div>
+    <div *ngIf="locationFlag" class="row">
+        <div class="col text-right mt-1">
+            <div ngbDropdown class="d-inline-block">
+                <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Sort by</button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button ngbDropdownItem (click)="sort('date')">Date</button>
+                    <button ngbDropdownItem (click)="sort('location')">Location</button>
+                    <button ngbDropdownItem (click)="sort('quantity')">Quantity</button>
+                    <button ngbDropdownItem (click)="sort('occation')">Occation</button>
+                </div>
+            </div>
+        </div>
+        <table class="table">
+            <tr>
+                <th>Date</th>
+                <th>Location</th>
+                <th>No of servings</th>
+                <th>Occation</th>
+                <th></th>
+
+            </tr>
+            <tr *ngFor="let request of locationRequests">
+                <td>{{request.date}}</td>
+                <td>{{request.location}}</td>
+                <td>{{request.noOfPackets}}</td>
+                <td>{{request.occation}}</td>
+                <td>
+                    <button class="btn btn-primary" (click)="Volunteer(request)">Volunteer this Request</button>
+                </td>
+
+            </tr>
+        </table>
+    </div>
+    <div *ngIf="quantityFlag" class="row">
+        <div class="col text-right mt-1">
+            <div ngbDropdown class="d-inline-block">
+                <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Sort by</button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button ngbDropdownItem (click)="sort('date')">Date</button>
+                    <button ngbDropdownItem (click)="sort('location')">Location</button>
+                    <button ngbDropdownItem (click)="sort('quantity')">Quantity</button>
+                    <button ngbDropdownItem (click)="sort('occation')">Occation</button>
+                </div>
+            </div>
+        </div>
+        <table class="table">
+            <tr>
+                <th>Date</th>
+                <th>Location</th>
+                <th>No of servings</th>
+                <th>Occation</th>
+                <th></th>
+
+            </tr>
+            <tr *ngFor="let request of quantityRequests">
+                <td>{{request.date}}</td>
+                <td>{{request.location}}</td>
+                <td>{{request.noOfPackets}}</td>
+                <td>{{request.occation}}</td>
+                <td>
+                    <button class="btn btn-primary" (click)="Volunteer(request)">Volunteer this Request</button>
+                </td>
+
+            </tr>
+        </table>
+    </div>
+    <div *ngIf="occationFlag" class="row">
+        <div class="col text-right mt-1">
+            <div ngbDropdown class="d-inline-block">
+                <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Sort by</button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button ngbDropdownItem (click)="sort('date')">Date</button>
+                    <button ngbDropdownItem (click)="sort('location')">Location</button>
+                    <button ngbDropdownItem (click)="sort('quantity')">Quantity</button>
+                    <button ngbDropdownItem (click)="sort('occation')">Occation</button>
+                </div>
+            </div>
+        </div>
+        <table class="table">
+            <tr>
+                <th>Date</th>
+                <th>Location</th>
+                <th>No of servings</th>
+                <th>Occation</th>
+                <th></th>
+
+            </tr>
+            <tr *ngFor="let request of occationRequests">
+                <td>{{request.date}}</td>
+                <td>{{request.location}}</td>
+                <td>{{request.noOfPackets}}</td>
+                <td>{{request.occation}}</td>
+                <td>
+                    <button class="btn btn-primary" (click)="Volunteer(request)">Volunteer this Request</button>
+                </td>
+
+            </tr>
+        </table>
+    </div>
 </div>
 </div>

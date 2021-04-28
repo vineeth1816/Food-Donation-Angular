@@ -1,0 +1,72 @@
+<p>logistic-donation-status works!</p>
+<div class="container panel panel-default mt-5">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded justify-content-between">
+        <p class="navbar-brand">Donations Status</p>
+
+    </nav>
+    <div class="container border border-dark rounded col-sm-12">
+        <div>
+            <div>
+
+
+
+                <div class="table">
+                    <tr>
+                        <th>Request ID</th>
+                        <th *ngIf="detailsFlag">Name</th>
+                        <th *ngIf="detailsFlag">Location</th>
+                        <th *ngIf="detailsFlag">Contact no</th>
+                        <th *ngIf="detailsFlag">Purpose</th>
+                        <th *ngIf="detailsFlag">No of servings</th>
+                        <th *ngIf="detailsFlag">Status</th>
+                    </tr>
+                    <tr *ngFor="let request of requests">
+                        <td *ngIf="detailsFlag"><button class="btn btn-primary"
+                                (click)="viewStatus(request.donationId)">{{request.donationId}}</button></td>
+                        <td *ngIf="detailsFlag">{{request.name}}</td>
+                        <td *ngIf="detailsFlag">{{request.location}}</td>
+                        <td *ngIf="detailsFlag">{{request.contactNo}}</td>
+                        <td *ngIf="detailsFlag">{{request.purpose}}</td>
+                        <td *ngIf="detailsFlag" class="font-weight-bold" id="{{request.donationId}}"></td>
+                    </tr>
+                    <tr *ngFor="let request of requests;let i=index">
+                        <td *ngIf="!detailsFlag">
+                            <p>
+                                <button type="button" class="btn btn-outline-primary"
+                                    (click)="isCollapsed[i] = !isCollapsed[i]" [attr.aria-expanded]=true
+                                    aria-controls="{{i}}">
+                                    {{request.donationId}}
+                                </button>
+                            </p>
+                            <div id="{{i}}" [ngbCollapse]="!isCollapsed[i]">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <label class="font-weight-bold">Name:</label> {{request.name}}<br>
+                                        <label class="font-weight-bold">Location:</label>{{request.location}}<br>
+                                        <label class="font-weight-bold">Contact no:</label>{{request.contactNo}}<br>
+                                        <label class="font-weight-bold">Purpose:</label>{{request.purpose}}<br>
+                                        <label class="font-weight-bold">Status:</label>{{request.status}}<br>
+                                        <label class="font-weight-bold">No of
+                                            packets:</label>{{request.noOfPackets}}<br>
+                                        <button *ngIf="isStatus[i]"
+                                            (click)="changeStatus(request.donationId,'Approved',i)"
+                                            class="btn btn-success">Approve</button>&nbsp;&nbsp;&nbsp;
+                                        <button *ngIf="isStatus[i]"
+                                            (click)="changeStatus(request.donationId,'Rejected',i)"
+                                            class="btn btn-danger">Reject</button>
+
+                                        <button *ngIf="!isStatus[i]" (click)="addLogistics(request.donationId)" class="btn btn-primary">Add to Logiststics</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+
+                    </tr>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>

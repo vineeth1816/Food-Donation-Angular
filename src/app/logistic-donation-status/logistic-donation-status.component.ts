@@ -1,16 +1,15 @@
-import { mergeAnalyzedFiles } from '@angular/compiler';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { DonationServiceService } from '../donation-service.service';
+import { LogisticRequestServiceService } from '../logistic-request-service.service';
 
 @Component({
-  selector: 'app-donations-status',
-  templateUrl: './donations-status.component.html',
-  styleUrls: ['./donations-status.component.css']
+  selector: 'app-logistic-donation-status',
+  templateUrl: './logistic-donation-status.component.html',
+  styleUrls: ['./logistic-donation-status.component.css']
 })
-export class DonationsStatusComponent implements OnInit {
+export class LogisticDonationStatusComponent implements OnInit {
 
-  constructor(public donationService: DonationServiceService, public router: Router) { }
+  constructor(public logisticRequestUtility :LogisticRequestServiceService, public router: Router) { }
 
   requests: any;
   flag: boolean = false;
@@ -31,19 +30,24 @@ export class DonationsStatusComponent implements OnInit {
       this.router.navigate(['/login']);
 
     }
+    
     this.userId = localStorage.getItem('userId').substr(1, localStorage.getItem('userId').length - 2);
     if (this.userId == "admin") {
       this.isStatus=[true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true];
 
       this.detailsFlag = false;
 
-      this.donationService.getAllRequests()
-        .subscribe((response:any) =>{ this.requests = response;
+      this.logisticRequestUtility.getAllPendingDonorRequests()
+        .subscribe((response:any) =>{ console.log(response) ;this.requests = response;
           
           this.size=response.length;
+
+          
+
+
           
           for (let i = 0; i < this.size; i++) {
-            if(response[i].status=="Approved" || response[i].status=="Rejected" || response[i].status=="Mapped" || response[i].status=="Logistics Assigned")
+            if(response[i].status=="Approved" || response[i].status=="Rejected" )
             this.isStatus[i]=false;
             
           }
@@ -54,7 +58,7 @@ export class DonationsStatusComponent implements OnInit {
     }
     else {
       this.detailsFlag = true;
-      this.donationService.getRequestById(this.userId)
+      this.logisticRequestUtility.getRequestById(this.userId)
         .subscribe(result => this.requests = result, error => alert("Server error"));
     }
   }
@@ -98,7 +102,7 @@ export class DonationsStatusComponent implements OnInit {
   changeStatus(donationId: String, status: String,i:number) {
     // this.isStatus[i]=false;
 
-    this.donationService.changeStatus(donationId, status)
+    this.logisticRequestUtility.changeStatus(donationId, status)
       .subscribe(result => {
         if (result == true){
           alert(status);
@@ -107,6 +111,13 @@ export class DonationsStatusComponent implements OnInit {
           alert("buggy");
       }, error => alert("server error"));
       
+  }
+
+  addLogistics(donationId:any){
+    this.router.navigate(['/addVehicle']);
+    localStorage.setItem('donationId',donationId);
+
+    
   }
  
 

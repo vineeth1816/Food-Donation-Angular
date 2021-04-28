@@ -18,34 +18,34 @@
     <button class="btn btn-light" (click)="viewFoodRequests()">
     <div class="card text-white bg-dark mb-3"  style="width: 18rem;">
       <div class="card-body">
-        <h1 class="card-title text-center display-3">0</h1>
+        <h1 class="card-title text-center display-3">{{count}}</h1>
       </div>
       <div class="card-footer fs-3 text-center">View Food Requests</div>
     </div>
   </button>
   </div>
   <div class="row col-sm-12 ml-sm-1 mt-sm-2 p-3 mb-sm-2 justify-content-between">
-    <button class="btn btn-light" (click)="viewBlogs()">
+    <button class="btn btn-light" (click)="viewLogisticsDonationRequests()">
+    <div class="card text-white bg-dark mb-3"  style="width: 18rem;">
+      <div class="card-body">
+        <h1 class="card-title text-center display-3">{{logCount}}</h1>
+      </div>
+      <div class="card-footer fs-3 text-center">View Logistic Requests</div>
+    </div></button>
+    <button class="btn btn-light" (click)="mappedRequest()">
+    <div class="card text-white bg-dark mb-3"  style="width: 18rem;">
+      <div class="card-body">
+        <h1 class="card-title text-center display-3">{{mapCount}}</h1>
+      </div>
+      <div class="card-footer fs-3 text-center">Mapped Requests</div>
+    </div></button>
+    <!-- <button class="btn btn-light" (click)="viewBlogs()">
     <div class="card text-white bg-dark mb-3" (click)="viewBlogs()" style="width: 18rem;">
       <div class="card-body">
         <h1 class="card-title text-center display-3">0</h1>
       </div>
       <div class="card-footer fs-3 text-center">Help Requests</div>
-    </div></button>
-    <button class="btn btn-light" (click)="viewBlogs()">
-    <div class="card text-white bg-dark mb-3" (click)="viewBlogs()" style="width: 18rem;">
-      <div class="card-body">
-        <h1 class="card-title text-center display-3">0</h1>
-      </div>
-      <div class="card-footer fs-3 text-center">Help Requests</div>
-    </div></button>
-    <button class="btn btn-light" (click)="viewBlogs()">
-    <div class="card text-white bg-dark mb-3" (click)="viewBlogs()" style="width: 18rem;">
-      <div class="card-body">
-        <h1 class="card-title text-center display-3">0</h1>
-      </div>
-      <div class="card-footer fs-3 text-center">Help Requests</div>
-    </div></button>
-  </div>
+    </div></button>-->
+  </div> 
 
 </div>

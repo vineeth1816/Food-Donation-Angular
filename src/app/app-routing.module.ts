@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AdminRequestsComponent } from './admin-requests/admin-requests.component';
 import { BlogsComponent } from './blogs/blogs.component';
@@ -11,12 +12,15 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ForgotUserIdComponent } from './forgot-user-id/forgot-user-id.component';
 import { HomeComponent } from './home/home.component';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { LogisticDonationStatusComponent } from './logistic-donation-status/logistic-donation-status.component';
+import { LogisticRequestAdminComponent } from './logistic-request-admin/logistic-request-admin.component';
 import { MappedRequestsComponent } from './mapped-requests/mapped-requests.component';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { ViewFoodRequestsComponent } from './view-food-requests/view-food-requests.component';
 import { ViewLogisticDonationRequestsComponent } from './view-logistic-donation-requests/view-logistic-donation-requests.component';
+import { VolunteerFoodRequestFormComponent } from './volunteer-food-request-form/volunteer-food-request-form.component';
 
 const routes: Routes = [
   {path:'register',component:RegisterFormComponent},
@@ -40,7 +44,11 @@ const routes: Routes = [
   {path:'Request Status',component:ViewFoodRequestsComponent},
   {path:'Food requests/Request Food',component:FoodRequestComponent},
   {path:'Donate Logistics',component:DonateLogisticsComponent},
-  {path:'Logistic Donation Status',component:ViewLogisticDonationRequestsComponent}
+  {path:'Logistic Donation Status',component:ViewLogisticDonationRequestsComponent},
+  {path:'volunteerRequestForm',component:VolunteerFoodRequestFormComponent},
+  {path:'Logistic Donation Requests',component:LogisticDonationStatusComponent},
+  {path:'addVehicle',component:AddVehicleComponent},
+  {path:'logisticRequestAdmin',component:LogisticRequestAdminComponent}
   
 
 ];

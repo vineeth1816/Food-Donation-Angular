@@ -26,6 +26,12 @@ import { ViewFoodRequestsComponent } from './view-food-requests/view-food-reques
 import { MappedRequestsComponent } from './mapped-requests/mapped-requests.component';
 import { DonateLogisticsComponent } from './donate-logistics/donate-logistics.component';
 import { ViewLogisticDonationRequestsComponent } from './view-logistic-donation-requests/view-logistic-donation-requests.component';
+import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
+import { VolunteerFoodRequestFormComponent } from './volunteer-food-request-form/volunteer-food-request-form.component';
+import { LogisticDonationStatusComponent } from './logistic-donation-status/logistic-donation-status.component';
+import { LogisticRequestAdminComponent } from './logistic-request-admin/logistic-request-admin.component';
+
+
 
 
 
@@ -50,6 +56,12 @@ import { ViewLogisticDonationRequestsComponent } from './view-logistic-donation-
     MappedRequestsComponent,
     DonateLogisticsComponent,
     ViewLogisticDonationRequestsComponent,
+    AddVehicleComponent,
+    VolunteerFoodRequestFormComponent,
+    LogisticDonationStatusComponent,
+    LogisticRequestAdminComponent,
+    
+  
     
   ],
   imports: [

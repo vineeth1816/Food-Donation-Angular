@@ -1,1 +1,88 @@
 <p>mapped-requests works!</p>
+<div class="container panel panel-default mt-5">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded justify-content-between">
+        <p class="navbar-brand">Mapped Requests</p>
+
+    </nav>
+    <div class="container border border-dark rounded col-sm-12">
+        <div>
+            <div>
+
+
+
+                <div class="table">
+                    <tr>
+                        <th>Request ID</th>
+                        <th>Donation ID </th>
+                        
+                        
+                       
+                       
+                        <th>status</th>
+                        <th></th>
+                        <th>Logistic Id </th>
+                       
+                    </tr>
+                    <tr *ngFor="let request of requests">
+                        <td>{{request.requestId}}</td>
+                        <td>{{request.donationId}}</td>
+                        
+                        
+                        <td>{{request.status}}</td>
+                        <td><button *ngIf="request.logisticId==null" class="btn btn-primary"
+                                (click)="assignLogistics(request.donationId,request.requestId)">Assign logistics</button></td>
+                        <!-- <td class="font-weight-bold" id="{{request.donationId}}"></td> -->
+                        <td *ngIf="!(request.logisticId==null)">{{request.logisticId}}</td>
+                    </tr>
+
+
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+
+
+
+
+
+<!-- this is to show logistic details to the admin-->
+
+
+
+                    <div *ngIf="vehiclesFlag" class="container panel panel-default mt-5 ">
+                        <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded justify-content-between">
+                            <p class="navbar-brand">Avalable Logistics</p>
+                            <button *ngIf="logisticRequestFlag" class="btn btn-warning" (click)=raiseLogisticRequest()>Raise Logistc Request</button>
+                        </nav>
+                        <div class="container border border-dark rounded col-sm-12">
+                            <div>
+                                <div>
+                    
+                    
+                    
+                                    <div class="table">
+                                        <tr>
+                                            <th>Vehicle No</th>
+                                            <th>Driver Name</th>
+                                            <th>Location</th>
+                                        
+                                        </tr>
+                                        <tr *ngFor="let vehicle of vehicles">
+                                            <td>{{vehicle.vehicleNo}}</td>
+                                            <td>{{vehicle.driverName}}</td>
+                                            <td>{{vehicle.location}}</td>
+                                    
+                    
+                                            <td><button class="btn btn-primary"
+                                                    (click)="assignVehicle(vehicle.vehicleNo)">Assign This Vehicle?</button></td>
+                                            
+                    
+                                        </tr>
+                    
+                    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
