@@ -18,6 +18,11 @@ export class MappedRequestsComponent implements OnInit {
 vehicles:any;
 requests:any;
   ngOnInit(): void {
+    if (localStorage.getItem('userId') == null) {
+      this.router.navigate(['/login']);
+
+    }
+
     this.mappingUtility.getAllRequests()
     .subscribe(result=>{
       this.requests=result;

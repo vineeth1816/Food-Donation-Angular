@@ -12,29 +12,29 @@ import { FoodRequest } from '../FoodRequest';
 })
 export class FoodRequestComponent implements OnInit {
 
-req=new FoodRequest();
-  constructor(public foodRequestService:FoodRequestServiceService,public router:Router) { }
+  req = new FoodRequest();
+  constructor(public foodRequestService: FoodRequestServiceService, public router: Router) { }
 
 
   ngOnInit(): void {
-     if(localStorage.getItem('userId')==null){
-      this.router.navigate(['/login']); 
+    if (localStorage.getItem('userId') == null) {
+      this.router.navigate(['/login']);
     }
-   
-    
+
+
   }
-  validate(myForm:NgForm){
-    
-  
+  validate(myForm: NgForm) {
+
+
     console.log(this.req.occation)
     this.req.userId = localStorage.getItem('userId').substr(1, localStorage.getItem('userId').length - 2);
     console.log(this.req)
     this.foodRequestService.insertFoodRequest(this.req)
-    .subscribe(result=>{
-      console.log(result);
-      alert('Request Sent Successfully');
-      this.router.navigate(['blogs'])
-    },error=>console.log("Request not sent due to server error"))
+      .subscribe(result => {
+        console.log(result);
+        alert('Request Sent Successfully');
+        this.router.navigate(['blogs'])
+      }, error => console.log("Request not sent due to server error"))
 
   }
 }

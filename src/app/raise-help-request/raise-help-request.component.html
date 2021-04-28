@@ -1,0 +1,84 @@
+
+<div class="container h-100 col-sm-6 mt-4">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-10 col-md-8 col-lg-6">
+            <h1>Raise Ticket</h1>
+            <form class="form-horizontal" #helpForm="ngForm" (ngSubmit)="validate(helpForm)">
+
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="email"> Issue:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="Enter Issue" #issue="ngModel" name="issue"
+                            ngModel [(ngModel)]="req.issue" required>
+                    </div>
+                    <div *ngIf="issue.touched && issue.invalid" class="text-danger ml-4">
+                        <div *ngIf="issue.errors.required"> Issue is required</div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="purpose">Description</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" #desc="ngModel" placeholder="Enter Description" ngModel
+                            [(ngModel)]="req.description" name="description" required>
+                    </div>
+                    <div *ngIf="desc.touched && desc.invalid" class="text-danger ml-4">
+                        <div *ngIf="desc.errors.required">Description is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" [disabled]="helpForm.invalid" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="container panel panel-default mt-5">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded justify-content-between">
+        <p class="navbar-brand">Help Requests Status</p>
+
+    </nav>
+    <div class="container border border-dark rounded col-sm-12">
+        <div>
+            <div>
+
+
+
+                <div class="table">
+                    <tr>
+                        <th>Help Request ID</th>
+
+                        <th>Issue</th>
+                        <th>Description no</th>
+                        <th>Date</th>
+
+                        <th>Status</th>
+                        <th>Resolution</th>
+                    </tr>
+
+                    <tr *ngFor="let request of requests">
+                        <td><button class="btn btn-primary"
+                                (click)="viewStatus(request.requestId)">{{request.requestId}}</button></td>
+
+                        <td>{{request.issue}}</td>
+                        <td>{{request.description}}</td>
+                        <td>{{request.date}}</td>
+
+                        <!-- <td *ngIf="detailsFlag">{{request.date}}</td> -->
+                        <td class="font-weight-bold" id="{{request.requestId}}"></td>
+                        <td>{{request.resolution}}</td>
+                    </tr>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>

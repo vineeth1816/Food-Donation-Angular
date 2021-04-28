@@ -11,25 +11,25 @@ import { NavBarComponent } from '../nav-bar/nav-bar.component';
   styleUrls: ['./donate-food.component.css']
 })
 export class DonateFoodComponent implements OnInit {
-req=new FoodDonationRequest();
-  constructor(public donationRequestService:DonationrequestserviceService,public router:Router) { }
+  req = new FoodDonationRequest();
+  constructor(public donationRequestService: DonationrequestserviceService, public router: Router) { }
 
   ngOnInit(): void {
-     if(localStorage.getItem('userId')==null){
-      this.router.navigate(['/login']); 
-     }
-    
-    
+    if (localStorage.getItem('userId') == null) {
+      this.router.navigate(['/login']);
+    }
+
+
   }
-  validate(myForm:NgForm){
+  validate(myForm: NgForm) {
     console.log(this.req)
-    this.req.userId=localStorage.getItem('userId').substr(1, localStorage.getItem('userId').length - 2);
+    this.req.userId = localStorage.getItem('userId').substr(1, localStorage.getItem('userId').length - 2);
     this.donationRequestService.insertDonationRequest(this.req)
-    .subscribe(result=>{
-      console.log(result);
-      alert('Request Sent Successfully');
-      this.router.navigate(['/View Requests'])
-    },error=>console.log("Request not sent due to server error"));
+      .subscribe(result => {
+        console.log(result);
+        alert('Request Sent Successfully');
+        this.router.navigate(['/View Requests'])
+      }, error => console.log("Request not sent due to server error"));
 
   }
 

@@ -30,6 +30,9 @@ import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
 import { VolunteerFoodRequestFormComponent } from './volunteer-food-request-form/volunteer-food-request-form.component';
 import { LogisticDonationStatusComponent } from './logistic-donation-status/logistic-donation-status.component';
 import { LogisticRequestAdminComponent } from './logistic-request-admin/logistic-request-admin.component';
+import { RaiseHelpRequestComponent } from './raise-help-request/raise-help-request.component';
+import { HelpRequestsComponent } from './help-requests/help-requests.component';
+import { ResolutionFormComponentComponent } from './resolution-form-component/resolution-form-component.component';
 
 
 
@@ -60,6 +63,9 @@ import { LogisticRequestAdminComponent } from './logistic-request-admin/logistic
     VolunteerFoodRequestFormComponent,
     LogisticDonationStatusComponent,
     LogisticRequestAdminComponent,
+    RaiseHelpRequestComponent,
+    HelpRequestsComponent,
+    ResolutionFormComponentComponent,
     
   
     

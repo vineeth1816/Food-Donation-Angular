@@ -38,6 +38,7 @@ export class NavBarComponent implements OnInit {
   requestStatus: String;
   adminRequests:String;
   userId:String;
+  helpType:String;
   buttonDisable() {
     this.flag = false;
     this.logoutFlag = true;
@@ -63,24 +64,28 @@ export class NavBarComponent implements OnInit {
           this.requestStatus = "View Requests";
           this.adminRequests="Admin Requests"
           localStorage.setItem("userCategory",this.userCategory.toString());
+          this.helpType="Help"
         }
         else if (this.userCategory == "NGO PoC") {
           this.featureFlag = true;
           this.requestOption = "Request Food";
           this.requestStatus = "Request Status";
           // this.adminRequests="Admin Requests"
+          this.helpType="Help"
         } else if (this.userCategory == "Logistics Sponser") {
           console.log("inside logistics");
           this.featureFlag = true;
           this.requestOption = "Donate Logistics";
           this.requestStatus = "Logistic Donation Status";
           this.adminRequests="Admin Requests"
+          this.helpType="Help"
         }
         else if(this.userCategory=="Admin"){
           this.requestOption="Dashboard";
           // this.requestOption="Dashboard";
           this.featureFlag=true;
           this.blogsFlag=false;
+          this.helpType=""
           
         }
       },

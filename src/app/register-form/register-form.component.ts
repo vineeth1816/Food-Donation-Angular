@@ -16,6 +16,7 @@ export class RegisterFormComponent implements OnInit {
   constructor(public registerServcie:RegisterServiceService,public route:Router) { }
 
   ngOnInit(): void {
+    
   }
 
   validate(myForm:NgForm){

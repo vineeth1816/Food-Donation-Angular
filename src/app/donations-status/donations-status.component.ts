@@ -19,37 +19,38 @@ export class DonationsStatusComponent implements OnInit {
   element: HTMLElement;
   userId: String;
   detailsFlag: boolean = true;
-  size:number;
+  size: number;
   i: number = 0;
-  
+
   public isCollapsed = new Array().fill(true);
-  isStatus:boolean[]=[];
+  isStatus: boolean[] = [];
   @ViewChild('myTd') myTd: ElementRef;
   ngOnInit(): void {
-    
+
     if (localStorage.getItem('userId') == null) {
       this.router.navigate(['/login']);
 
     }
     this.userId = localStorage.getItem('userId').substr(1, localStorage.getItem('userId').length - 2);
     if (this.userId == "admin") {
-      this.isStatus=[true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true];
+      this.isStatus = [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true];
 
       this.detailsFlag = false;
 
       this.donationService.getAllRequests()
-        .subscribe((response:any) =>{ this.requests = response;
-          
-          this.size=response.length;
-          
+        .subscribe((response: any) => {
+          this.requests = response;
+
+          this.size = response.length;
+
           for (let i = 0; i < this.size; i++) {
-            if(response[i].status=="Approved" || response[i].status=="Rejected" || response[i].status=="Mapped" || response[i].status=="Logistics Assigned")
-            this.isStatus[i]=false;
-            
+            if (response[i].status == "Approved" || response[i].status == "Rejected" || response[i].status == "Mapped" || response[i].status == "Logistics Assigned")
+              this.isStatus[i] = false;
+
           }
         }, error => alert("Server error"));
 
-        
+
 
     }
     else {
@@ -81,12 +82,11 @@ export class DonationsStatusComponent implements OnInit {
         this.element = document.getElementById(this.request) as HTMLElement;
         // console.log(this.request)
         this.message = val.status;
-        if(this.message=='Approved'){
-          this.element.style.color="green";
+        if (this.message == 'Approved') {
+          this.element.style.color = "green";
         }
-        else
-        {
-          this.element.style.color="red";
+        else {
+          this.element.style.color = "red";
         }
         this.element.innerHTML = this.message;
 
@@ -95,19 +95,20 @@ export class DonationsStatusComponent implements OnInit {
     }
   }
 
-  changeStatus(donationId: String, status: String,i:number) {
+  changeStatus(donationId: String, status: String, i: number) {
     // this.isStatus[i]=false;
 
     this.donationService.changeStatus(donationId, status)
       .subscribe(result => {
-        if (result == true){
+        if (result == true) {
           alert(status);
-          this.ngOnInit();}
+          this.ngOnInit();
+        }
         else
           alert("buggy");
       }, error => alert("server error"));
-      
+
   }
- 
+
 
 }

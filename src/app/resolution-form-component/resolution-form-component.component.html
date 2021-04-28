@@ -1,0 +1,25 @@
+<div class="container h-100 col-sm-6 mt-4">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-10 col-md-8 col-lg-12">
+            <h1>Provide Resolution</h1>
+            <form class="form-horizontal" #resForm="ngForm" (ngSubmit)="validate(resForm)">
+
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="purpose">Enter Resolution</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" #resolution="ngModel" placeholder="Enter Resolution"
+                            ngModel [(ngModel)]="req.resolution" name="resolution" required>
+                    </div>
+                    <div *ngIf="resolution.touched && resolution.invalid" class="text-danger ml-4">
+                        <div *ngIf="resolution.errors.required">Resolution is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" [disabled]="resForm.invalid" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

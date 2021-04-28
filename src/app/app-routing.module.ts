@@ -10,13 +10,16 @@ import { DonationsStatusComponent } from './donations-status/donations-status.co
 import { FoodRequestComponent } from './food-request/food-request.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ForgotUserIdComponent } from './forgot-user-id/forgot-user-id.component';
+import { HelpRequestsComponent } from './help-requests/help-requests.component';
 import { HomeComponent } from './home/home.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { LogisticDonationStatusComponent } from './logistic-donation-status/logistic-donation-status.component';
 import { LogisticRequestAdminComponent } from './logistic-request-admin/logistic-request-admin.component';
 import { MappedRequestsComponent } from './mapped-requests/mapped-requests.component';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
+import { RaiseHelpRequestComponent } from './raise-help-request/raise-help-request.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
+import { ResolutionFormComponentComponent } from './resolution-form-component/resolution-form-component.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { ViewFoodRequestsComponent } from './view-food-requests/view-food-requests.component';
 import { ViewLogisticDonationRequestsComponent } from './view-logistic-donation-requests/view-logistic-donation-requests.component';
@@ -48,7 +51,10 @@ const routes: Routes = [
   {path:'volunteerRequestForm',component:VolunteerFoodRequestFormComponent},
   {path:'Logistic Donation Requests',component:LogisticDonationStatusComponent},
   {path:'addVehicle',component:AddVehicleComponent},
-  {path:'logisticRequestAdmin',component:LogisticRequestAdminComponent}
+  {path:'logisticRequestAdmin',component:LogisticRequestAdminComponent},
+  {path:'Help',component:RaiseHelpRequestComponent},
+  {path:'helpRequests',component:HelpRequestsComponent},
+  {path:'resolution',component:ResolutionFormComponentComponent}
   
 
 ];

@@ -18,7 +18,7 @@ export class UserDashboardComponent implements OnInit {
   blog=new Blog();
 
   ngOnInit(): void {
-    if(localStorage.getItem('userId')==null){
+    if((localStorage.getItem('userId')==null) || (localStorage.getItem('userId').includes('admin'))){
       this.router.navigate(['/login']); 
     }
     else{

@@ -1,4 +1,3 @@
-
 <div class="container panel panel-default mt-5">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded justify-content-between">
         <p class="navbar-brand">Donations Status</p>
@@ -49,13 +48,17 @@
                                         <label class="font-weight-bold">Status:</label>{{request.status}}<br>
                                         <label class="font-weight-bold">No of
                                             packets:</label>{{request.noOfPackets}}<br>
-                                            <button *ngIf="isStatus[i]" (click)="changeStatus(request.donationId,'Approved',i)" class="btn btn-success">Approve</button>&nbsp;&nbsp;&nbsp;
-                                            <button *ngIf="isStatus[i]" (click)="changeStatus(request.donationId,'Rejected',i)"class="btn btn-danger">Reject</button>
+                                        <button *ngIf="isStatus[i]"
+                                            (click)="changeStatus(request.donationId,'Approved',i)"
+                                            class="btn btn-success">Approve</button>&nbsp;&nbsp;&nbsp;
+                                        <button *ngIf="isStatus[i]"
+                                            (click)="changeStatus(request.donationId,'Rejected',i)"
+                                            class="btn btn-danger">Reject</button>
                                     </div>
                                 </div>
                             </div>
                         </td>
-                        
+
                     </tr>
                 </div>
 

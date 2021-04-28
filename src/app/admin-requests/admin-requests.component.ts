@@ -39,6 +39,10 @@ export class AdminRequestsComponent implements OnInit {
   userId:String;
   userFlag:boolean=true;
   ngOnInit(): void {
+     if (localStorage.getItem('userId') == null) {
+      this.router.navigate(['/login']);
+    }
+
     this.normalFlag=true;
     this.category=localStorage.getItem("userCategory");
     if(this.category=="Food Donor"){

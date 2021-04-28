@@ -1,0 +1,33 @@
+
+<div class="container panel panel-default mt-5">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded justify-content-between">
+        <p class="navbar-brand">Help Requests</p>
+
+    </nav>
+    <div class="container border border-dark rounded col-sm-12">
+        <div>
+            <div>
+                <div class="table">
+                    <tr>
+                        <th>Request ID</th>
+                        <th>Issue </th>
+                        <th>Description</th>
+                        <th>Date</th>
+                        <th>Raised By</th>
+                        <th>status</th>
+                    </tr>
+                    <tr *ngFor="let request of requests">
+                        <td>{{request.requestId}}</td>
+                        <td>{{request.issue}}</td>
+                        <td>{{request.description}}</td>
+                        <td>{{request.date}}</td>
+                        <td>{{request.userId}}</td>
+                        <td>{{request.status}}</td>
+                        <td><button *ngIf="request.status=='Pending'" class="btn btn-primary"
+                                (click)="resolution(request.requestId)">Provide Resolution</button></td>
+                    </tr>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

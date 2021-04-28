@@ -28,10 +28,16 @@ export class VolunteerFoodRequestFormComponent implements OnInit {
 
   ngOnInit(): void {
 
+    if (localStorage.getItem('userId') == null) {
+      this.router.navigate(['/login']);
+
+    }
+
     this.name = "hell";
     this.donor.name = localStorage.getItem('volunteeredRequestName');
     this.donor.noOfPackets = Number(localStorage.getItem('volunteeredRequestQuantity'));
 
+    
 
   }
 
