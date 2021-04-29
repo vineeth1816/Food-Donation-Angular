@@ -40,7 +40,7 @@
                     </div>
                     </div>
                     </div>
-                    </div>
+                    
 
 
 
@@ -74,7 +74,7 @@
                                             <td>{{vehicle.location}}</td>
                                     
                     
-                                            <td><button class="btn btn-primary"
+                                            <td><button *ngIf="(vehicles==null)" class="btn btn-primary"
                                                     (click)="assignVehicle(vehicle.vehicleNo)">Assign This Vehicle?</button></td>
                                             
                     
@@ -86,3 +86,5 @@
                             </div>
                         </div>
                     </div>
+                </div>
+               <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>    

@@ -24,7 +24,6 @@ export class ResolutionFormComponentComponent implements OnInit {
 
   validate(helpForm: NgForm) {
     var reqId = localStorage.getItem('resId');
-    alert(this.req.resolution)
     this.req.requestId = reqId;
 
     this.ticketUtility.updateTicket(this.req).subscribe(result => {

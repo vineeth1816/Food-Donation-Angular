@@ -22,7 +22,6 @@ export class HelpRequestsComponent implements OnInit {
     })
   }
   resolution(reqId: any) {
-    alert(reqId)
     localStorage.setItem('resId', reqId)
     this.router.navigate(['resolution']);
   }

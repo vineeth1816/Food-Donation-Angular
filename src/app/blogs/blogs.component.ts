@@ -35,6 +35,7 @@ export class BlogsComponent implements OnInit {
     this.message = "Blogs";
     this.blogUtility.getBlogs()
       .subscribe(result => {
+        console.log(result)
         this.blogs = result;
         // console.log(this.blogs[0]);
       }, error => console.log("Server error"));
@@ -44,6 +45,7 @@ export class BlogsComponent implements OnInit {
 
     this.blogUtility.insertBlog(this.blog)
       .subscribe(result => {
+        console.log(result)
         alert("Blog Posted Successfully");
         myForm.resetForm();
         this.ngOnInit();

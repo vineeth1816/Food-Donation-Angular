@@ -22,7 +22,6 @@ export class AddVehicleComponent implements OnInit {
     }
   }
   check() {
-    alert("entered");
     console.log(this.v.vehicleNo);
     this.addVehicleService.addVehicle(this.v).subscribe(result => {
       if (result) {

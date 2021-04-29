@@ -14,6 +14,7 @@
                     <div *ngIf="username.invalid && username.touched" class="text-danger">
                         <div *ngIf="username.errors.required">Username is required</div>
                     </div>
+                <div *ngIf="idFlag" class="text-danger">Username not matching</div>
                     
                 </div>
                 <div class="form-group">
