@@ -126,7 +126,7 @@ export class AdminDashboardComponent implements OnInit {
   logistic donation requests raised by 
   the logistic sponser*/
   viewLogisticsDonationRequests() {
-    alert("clicked")
+    // alert("clicked")
     this.router.navigate(['/Logistic Donation Requests'])
   }
   mappedRequest() {

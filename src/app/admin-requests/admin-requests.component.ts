@@ -170,7 +170,7 @@ export class AdminRequestsComponent implements OnInit {
     // },error=>alert("Server Error.Please try after sometime."));
     }
     else{
-      alert("Logistics flag");
+      // alert("Logistics flag");
       console.log(request.purpose)
       
       this.adminRequestsUtility.deleteRequest(request.requestId,"Logistics")
@@ -184,7 +184,7 @@ export class AdminRequestsComponent implements OnInit {
             this.user1=result;
             var name=this.user1.firstName;
             var contactNo=this.user1.contactNo;
-            alert("contact no"+this.user1.contactNo)
+            // alert("contact no"+this.user1.contactNo)
             this.logReq.userId=this.userId = localStorage.getItem('userId').substr(1, localStorage.getItem('userId').length - 2);
             this.logReq.name=String(name);
             this.logReq.contactNo=String(contactNo);
